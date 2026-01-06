@@ -3,7 +3,7 @@ type: docs
 title: Equipment
 ---
 
-# Equipment
+# Equipment (UNSTABLE PROOF-OF-CONCEPT)
 
 Equipment items provide stat bonuses when worn.
 

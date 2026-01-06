@@ -94,7 +94,7 @@ equipment rune_pickaxe {
 
 ## XP Formula
 
-Skill XP required per level follows a formula similar to RuneScape:
+Skill XP required per level is as follows:
 
 ```
 XP for level N ≈ (N^2 + N) / 2 * 50

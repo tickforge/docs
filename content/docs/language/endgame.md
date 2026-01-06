@@ -49,7 +49,7 @@ endgame {
 
 ## Credits
 
-The `credits` block shows after winning:
+The `credits` block shows during the endgame scenario:
 
 ```tfs
 credits {
