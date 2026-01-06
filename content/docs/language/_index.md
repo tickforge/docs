@@ -12,29 +12,29 @@ Complete documentation for the TickForge scripting language.
 ## Table of Contents
 
 ### Core
-- [Game Declaration](/game) - Game metadata, themes, and settings
-- [Resources](/resources) - Defining accumulatable values
-- [Player](/player) - Player leveling system
+- [Game Declaration](game) - Game metadata, themes, and settings
+- [Resources](resources) - Defining accumulatable values
+- [Player](player) - Player leveling system
 
 ### Gameplay
-- [Actions](/actions) - Clickable buttons
-- [Generators](/generators) - Automatic production
-- [Upgrades](/upgrades) - One-time purchases
-- [Achievements](/achievements) - Milestones and rewards
+- [Actions](actions) - Clickable buttons
+- [Generators](generators) - Automatic production
+- [Upgrades](upgrades) - One-time purchases
+- [Achievements](achievements) - Milestones and rewards
 
 ### RPG Systems
-- [Skills](/skills) - Skill-based progression
-- [Items & Inventory](/items) - Item management
-- [Locations & Nodes](/locations) - World and gathering
-- [Combat](/combat) - Enemies and fighting
-- [Recipes](/recipes) - Crafting system
-- [Equipment](/equipment) - Gear and bonuses
-- [Bank](/bank) - Item storage
+- [Skills](skills) - Skill-based progression
+- [Items & Inventory](items) - Item management
+- [Locations & Nodes](locations) - World and gathering
+- [Combat](combat) - Enemies and fighting
+- [Recipes](recipes) - Crafting system
+- [Equipment](equipment) - Gear and bonuses
+- [Bank](bank) - Item storage
 
 ### Meta
-- [Themes](/themes) - Visual customization
-- [Cheats](/cheats) - Cheat codes
-- [Endgame & Credits](/endgame) - Win conditions
+- [Themes](themes) - Visual customization
+- [Cheats](cheats) - Cheat codes
+- [Endgame & Credits](endgame) - Win conditions
 
 ## Syntax Overview
 
