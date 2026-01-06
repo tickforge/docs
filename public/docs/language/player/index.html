@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en-gb" dir="ltr">
+<head>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Player# The player block configures the player leveling system.
+Syntax# player { xp_per_level: 100 }Properties# Property Type Required Default Description xp_per_level number No 100 XP needed to gain a level Leveling Formula# The XP required for each level increases:
+XP for level N = xp_per_level * NWith xp_per_level: 100:
+Level 1: 100 XP Level 2: 200 XP Level 3: 300 XP etc. Gaining XP# XP is earned through:
+Actions# action click { name: &#34;Click&#34; produces: 1 gold grants_xp: 1 # Gain 1 XP per click }Achievements# achievement milestone { name: &#34;First Milestone&#34; requires: 100 gold grants_xp: 50 # Bonus XP when unlocked }Cheats# cheat levelup { code: &#34;levelup&#34; grants_xp: 500 }Level Requirements# Player level can be used as a requirement for content:
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://docs.tickforge.io/docs/language/player/">
+  <meta property="og:site_name" content="Tick Forge Documentation">
+  <meta property="og:title" content="Player">
+  <meta property="og:description" content="Player# The player block configures the player leveling system.
+Syntax# player { xp_per_level: 100 }Properties# Property Type Required Default Description xp_per_level number No 100 XP needed to gain a level Leveling Formula# The XP required for each level increases:
+XP for level N = xp_per_level * NWith xp_per_level: 100:
+Level 1: 100 XP Level 2: 200 XP Level 3: 300 XP etc. Gaining XP# XP is earned through:
+Actions# action click { name: &#34;Click&#34; produces: 1 gold grants_xp: 1 # Gain 1 XP per click }Achievements# achievement milestone { name: &#34;First Milestone&#34; requires: 100 gold grants_xp: 50 # Bonus XP when unlocked }Cheats# cheat levelup { code: &#34;levelup&#34; grants_xp: 500 }Level Requirements# Player level can be used as a requirement for content:">
+  <meta property="og:locale" content="en_gb">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+
+
+  <meta itemprop="name" content="Player">
+  <meta itemprop="description" content="Player# The player block configures the player leveling system.
+Syntax# player { xp_per_level: 100 }Properties# Property Type Required Default Description xp_per_level number No 100 XP needed to gain a level Leveling Formula# The XP required for each level increases:
+XP for level N = xp_per_level * NWith xp_per_level: 100:
+Level 1: 100 XP Level 2: 200 XP Level 3: 300 XP etc. Gaining XP# XP is earned through:
+Actions# action click { name: &#34;Click&#34; produces: 1 gold grants_xp: 1 # Gain 1 XP per click }Achievements# achievement milestone { name: &#34;First Milestone&#34; requires: 100 gold grants_xp: 50 # Bonus XP when unlocked }Cheats# cheat levelup { code: &#34;levelup&#34; grants_xp: 500 }Level Requirements# Player level can be used as a requirement for content:">
+  <meta itemprop="wordCount" content="218">
+
+<title>Player | Tick Forge Documentation</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://docs.tickforge.io/docs/language/player/">
+<link rel="stylesheet" href="/book.min.cc2c524ed250aac81b23d1f4af87344917b325208841feca0968fe450f570575.css" integrity="sha256-zCxSTtJQqsgbI9H0r4c0SRezJSCIQf7KCWj&#43;RQ9XBXU=" crossorigin="anonymous">
+
+
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.7644b4386e5e494963772a688fad4ef91a7711e49a774b7522c17f9ae8e87354.js" integrity="sha256-dkS0OG5eSUljdypoj61O&#43;Rp3EeSad0t1IsF/mujoc1Q=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-docs">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Tick Forge Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/getting-started/" class="">
+      Getting Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4be79ceb7c93731ea9ceaaf930a270db" class="toggle" checked />
+    <label for="section-4be79ceb7c93731ea9ceaaf930a270db" class="flex">
+      <a href="/docs/language/" class="">
+        Language Reference</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/achievements/" class="">
+      Achievements</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/actions/" class="">
+      Actions</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/bank/" class="">
+      Bank</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/cheats/" class="">
+      Cheats</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/combat/" class="">
+      Combat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/endgame/" class="">
+      Endgame &amp; Credits</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/equipment/" class="">
+      Equipment</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/game/" class="">
+      Game Declaration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/generators/" class="">
+      Generators</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/items/" class="">
+      Items &amp; Inventory</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/locations/" class="">
+      Locations &amp; Nodes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/player/" class="active">
+      Player</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/recipes/" class="">
+      Recipes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/resources/" class="">
+      Resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/skills/" class="">
+      Skills</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/themes/" class="">
+      Themes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/upgrades/" class="">
+      Upgrades</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/editor/" class="">
+      Editor Guide</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/platform/" class="">
+      Platform Features</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Player</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#syntax">Syntax</a></li>
+    <li><a href="#properties">Properties</a></li>
+    <li><a href="#leveling-formula">Leveling Formula</a></li>
+    <li><a href="#gaining-xp">Gaining XP</a>
+      <ul>
+        <li><a href="#actions">Actions</a></li>
+        <li><a href="#achievements">Achievements</a></li>
+        <li><a href="#cheats">Cheats</a></li>
+      </ul>
+    </li>
+    <li><a href="#level-requirements">Level Requirements</a></li>
+    <li><a href="#display">Display</a></li>
+    <li><a href="#example">Example</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="player">Player<a class="anchor" href="#player">#</a></h1>
+<p>The <code>player</code> block configures the player leveling system.</p>
+<h2 id="syntax">Syntax<a class="anchor" href="#syntax">#</a></h2>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">player {
+  xp_per_level: 100
+}</code></pre><h2 id="properties">Properties<a class="anchor" href="#properties">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Required</th>
+          <th>Default</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>xp_per_level</code></td>
+          <td>number</td>
+          <td>No</td>
+          <td><code>100</code></td>
+          <td>XP needed to gain a level</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="leveling-formula">Leveling Formula<a class="anchor" href="#leveling-formula">#</a></h2>
+<p>The XP required for each level increases:</p>
+<pre tabindex="0"><code>XP for level N = xp_per_level * N</code></pre><p>With <code>xp_per_level: 100</code>:</p>
+<ul>
+<li>Level 1: 100 XP</li>
+<li>Level 2: 200 XP</li>
+<li>Level 3: 300 XP</li>
+<li>etc.</li>
+</ul>
+<h2 id="gaining-xp">Gaining XP<a class="anchor" href="#gaining-xp">#</a></h2>
+<p>XP is earned through:</p>
+<h3 id="actions">Actions<a class="anchor" href="#actions">#</a></h3>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">action click {
+  name: &#34;Click&#34;
+  produces: 1 gold
+  grants_xp: 1  # Gain 1 XP per click
+}</code></pre><h3 id="achievements">Achievements<a class="anchor" href="#achievements">#</a></h3>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">achievement milestone {
+  name: &#34;First Milestone&#34;
+  requires: 100 gold
+  grants_xp: 50  # Bonus XP when unlocked
+}</code></pre><h3 id="cheats">Cheats<a class="anchor" href="#cheats">#</a></h3>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">cheat levelup {
+  code: &#34;levelup&#34;
+  grants_xp: 500
+}</code></pre><h2 id="level-requirements">Level Requirements<a class="anchor" href="#level-requirements">#</a></h2>
+<p>Player level can be used as a requirement for content:</p>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">generator advanced_miner {
+  name: &#34;Advanced Miner&#34;
+  cost: 1000 gold
+  produces: 10 gold
+  requires: level 5  # Must be level 5 to purchase
+}
+
+upgrade super_click {
+  name: &#34;Super Click&#34;
+  cost: 500 gold
+  requires: level 3
+  effect: add click 5
+}</code></pre><h2 id="display">Display<a class="anchor" href="#display">#</a></h2>
+<p>The player&rsquo;s level and XP progress are shown in the top-right of the game header.</p>
+<h2 id="example">Example<a class="anchor" href="#example">#</a></h2>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">player {
+  xp_per_level: 50  # Faster leveling
+}
+
+action grind {
+  name: &#34;Grind&#34;
+  produces: 1 gold
+  grants_xp: 2  # 2 XP per action
+}
+
+achievement first_level {
+  name: &#34;Level Up!&#34;
+  description: &#34;Reach level 2&#34;
+  requires: level 2
+  grants_xp: 25
+}</code></pre></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+
+
+
+
+  
+  
+  
+  <div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/docs/language/locations/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Locations &amp; Nodes</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/docs/language/recipes/" class="flex align-center">
+        <span>Recipes</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+  
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#syntax">Syntax</a></li>
+    <li><a href="#properties">Properties</a></li>
+    <li><a href="#leveling-formula">Leveling Formula</a></li>
+    <li><a href="#gaining-xp">Gaining XP</a>
+      <ul>
+        <li><a href="#actions">Actions</a></li>
+        <li><a href="#achievements">Achievements</a></li>
+        <li><a href="#cheats">Cheats</a></li>
+      </ul>
+    </li>
+    <li><a href="#level-requirements">Level Requirements</a></li>
+    <li><a href="#display">Display</a></li>
+    <li><a href="#example">Example</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en-gb" dir="ltr">
+<head>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Achievements# Achievements are milestones that unlock automatically when conditions are met.
+Syntax# achievement identifier { name: &#34;Display Name&#34; description: &#34;Description text&#34; requires: requirement grants_xp: number }Properties# Property Type Required Default Description name string Yes - Achievement name description string No - Description text requires requirement Yes - Unlock condition grants_xp number No 0 XP reward when unlocked Requirement Types# Resource Amount# achievement rich { name: &#34;Getting Rich&#34; description: &#34;Accumulate 1000 gold&#34; requires: 1000 gold grants_xp: 50 }Generator Count# achievement miner_army { name: &#34;Mining Army&#34; description: &#34;Own 10 miners&#34; requires: 10 miner grants_xp: 25 }Player Level# achievement leveled_up { name: &#34;Level 10&#34; description: &#34;Reach level 10&#34; requires: level 10 grants_xp: 100 }Examples# Resource Milestones# achievement first_gold { name: &#34;First Gold&#34; description: &#34;Earn your first gold&#34; requires: 1 gold grants_xp: 10 } achievement hundred_gold { name: &#34;Coin Collector&#34; description: &#34;Earn 100 gold&#34; requires: 100 gold grants_xp: 25 } achievement thousand_gold { name: &#34;Gold Hoarder&#34; description: &#34;Earn 1,000 gold&#34; requires: 1000 gold grants_xp: 50 } achievement million_gold { name: &#34;Millionaire&#34; description: &#34;Earn 1,000,000 gold&#34; requires: 1000000 gold grants_xp: 500 }Generator Milestones# achievement first_miner { name: &#34;First Employee&#34; description: &#34;Hire your first miner&#34; requires: 1 miner grants_xp: 10 } achievement ten_miners { name: &#34;Small Business&#34; description: &#34;Employ 10 miners&#34; requires: 10 miner grants_xp: 50 } achievement hundred_miners { name: &#34;Mining Corporation&#34; description: &#34;Employ 100 miners&#34; requires: 100 miner grants_xp: 200 }Display# Achievements appear in the right panel below upgrades, showing:
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://docs.tickforge.io/docs/language/achievements/">
+  <meta property="og:site_name" content="Tick Forge Documentation">
+  <meta property="og:title" content="Achievements">
+  <meta property="og:description" content="Achievements# Achievements are milestones that unlock automatically when conditions are met.
+Syntax# achievement identifier { name: &#34;Display Name&#34; description: &#34;Description text&#34; requires: requirement grants_xp: number }Properties# Property Type Required Default Description name string Yes - Achievement name description string No - Description text requires requirement Yes - Unlock condition grants_xp number No 0 XP reward when unlocked Requirement Types# Resource Amount# achievement rich { name: &#34;Getting Rich&#34; description: &#34;Accumulate 1000 gold&#34; requires: 1000 gold grants_xp: 50 }Generator Count# achievement miner_army { name: &#34;Mining Army&#34; description: &#34;Own 10 miners&#34; requires: 10 miner grants_xp: 25 }Player Level# achievement leveled_up { name: &#34;Level 10&#34; description: &#34;Reach level 10&#34; requires: level 10 grants_xp: 100 }Examples# Resource Milestones# achievement first_gold { name: &#34;First Gold&#34; description: &#34;Earn your first gold&#34; requires: 1 gold grants_xp: 10 } achievement hundred_gold { name: &#34;Coin Collector&#34; description: &#34;Earn 100 gold&#34; requires: 100 gold grants_xp: 25 } achievement thousand_gold { name: &#34;Gold Hoarder&#34; description: &#34;Earn 1,000 gold&#34; requires: 1000 gold grants_xp: 50 } achievement million_gold { name: &#34;Millionaire&#34; description: &#34;Earn 1,000,000 gold&#34; requires: 1000000 gold grants_xp: 500 }Generator Milestones# achievement first_miner { name: &#34;First Employee&#34; description: &#34;Hire your first miner&#34; requires: 1 miner grants_xp: 10 } achievement ten_miners { name: &#34;Small Business&#34; description: &#34;Employ 10 miners&#34; requires: 10 miner grants_xp: 50 } achievement hundred_miners { name: &#34;Mining Corporation&#34; description: &#34;Employ 100 miners&#34; requires: 100 miner grants_xp: 200 }Display# Achievements appear in the right panel below upgrades, showing:">
+  <meta property="og:locale" content="en_gb">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+
+
+  <meta itemprop="name" content="Achievements">
+  <meta itemprop="description" content="Achievements# Achievements are milestones that unlock automatically when conditions are met.
+Syntax# achievement identifier { name: &#34;Display Name&#34; description: &#34;Description text&#34; requires: requirement grants_xp: number }Properties# Property Type Required Default Description name string Yes - Achievement name description string No - Description text requires requirement Yes - Unlock condition grants_xp number No 0 XP reward when unlocked Requirement Types# Resource Amount# achievement rich { name: &#34;Getting Rich&#34; description: &#34;Accumulate 1000 gold&#34; requires: 1000 gold grants_xp: 50 }Generator Count# achievement miner_army { name: &#34;Mining Army&#34; description: &#34;Own 10 miners&#34; requires: 10 miner grants_xp: 25 }Player Level# achievement leveled_up { name: &#34;Level 10&#34; description: &#34;Reach level 10&#34; requires: level 10 grants_xp: 100 }Examples# Resource Milestones# achievement first_gold { name: &#34;First Gold&#34; description: &#34;Earn your first gold&#34; requires: 1 gold grants_xp: 10 } achievement hundred_gold { name: &#34;Coin Collector&#34; description: &#34;Earn 100 gold&#34; requires: 100 gold grants_xp: 25 } achievement thousand_gold { name: &#34;Gold Hoarder&#34; description: &#34;Earn 1,000 gold&#34; requires: 1000 gold grants_xp: 50 } achievement million_gold { name: &#34;Millionaire&#34; description: &#34;Earn 1,000,000 gold&#34; requires: 1000000 gold grants_xp: 500 }Generator Milestones# achievement first_miner { name: &#34;First Employee&#34; description: &#34;Hire your first miner&#34; requires: 1 miner grants_xp: 10 } achievement ten_miners { name: &#34;Small Business&#34; description: &#34;Employ 10 miners&#34; requires: 10 miner grants_xp: 50 } achievement hundred_miners { name: &#34;Mining Corporation&#34; description: &#34;Employ 100 miners&#34; requires: 100 miner grants_xp: 200 }Display# Achievements appear in the right panel below upgrades, showing:">
+  <meta itemprop="wordCount" content="245">
+
+<title>Achievements | Tick Forge Documentation</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://docs.tickforge.io/docs/language/achievements/">
+<link rel="stylesheet" href="/book.min.cc2c524ed250aac81b23d1f4af87344917b325208841feca0968fe450f570575.css" integrity="sha256-zCxSTtJQqsgbI9H0r4c0SRezJSCIQf7KCWj&#43;RQ9XBXU=" crossorigin="anonymous">
+
+
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.7644b4386e5e494963772a688fad4ef91a7711e49a774b7522c17f9ae8e87354.js" integrity="sha256-dkS0OG5eSUljdypoj61O&#43;Rp3EeSad0t1IsF/mujoc1Q=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-docs">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Tick Forge Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/getting-started/" class="">
+      Getting Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4be79ceb7c93731ea9ceaaf930a270db" class="toggle" checked />
+    <label for="section-4be79ceb7c93731ea9ceaaf930a270db" class="flex">
+      <a href="/docs/language/" class="">
+        Language Reference</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/achievements/" class="active">
+      Achievements</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/actions/" class="">
+      Actions</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/bank/" class="">
+      Bank</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/cheats/" class="">
+      Cheats</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/combat/" class="">
+      Combat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/endgame/" class="">
+      Endgame &amp; Credits</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/equipment/" class="">
+      Equipment</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/game/" class="">
+      Game Declaration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/generators/" class="">
+      Generators</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/items/" class="">
+      Items &amp; Inventory</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/locations/" class="">
+      Locations &amp; Nodes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/player/" class="">
+      Player</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/recipes/" class="">
+      Recipes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/resources/" class="">
+      Resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/skills/" class="">
+      Skills</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/themes/" class="">
+      Themes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/upgrades/" class="">
+      Upgrades</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/editor/" class="">
+      Editor Guide</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/platform/" class="">
+      Platform Features</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Achievements</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#syntax">Syntax</a></li>
+    <li><a href="#properties">Properties</a></li>
+    <li><a href="#requirement-types">Requirement Types</a>
+      <ul>
+        <li><a href="#resource-amount">Resource Amount</a></li>
+        <li><a href="#generator-count">Generator Count</a></li>
+        <li><a href="#player-level">Player Level</a></li>
+      </ul>
+    </li>
+    <li><a href="#examples">Examples</a>
+      <ul>
+        <li><a href="#resource-milestones">Resource Milestones</a></li>
+        <li><a href="#generator-milestones">Generator Milestones</a></li>
+      </ul>
+    </li>
+    <li><a href="#display">Display</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="achievements">Achievements<a class="anchor" href="#achievements">#</a></h1>
+<p>Achievements are milestones that unlock automatically when conditions are met.</p>
+<h2 id="syntax">Syntax<a class="anchor" href="#syntax">#</a></h2>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">achievement identifier {
+  name: &#34;Display Name&#34;
+  description: &#34;Description text&#34;
+  requires: requirement
+  grants_xp: number
+}</code></pre><h2 id="properties">Properties<a class="anchor" href="#properties">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Required</th>
+          <th>Default</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>name</code></td>
+          <td>string</td>
+          <td>Yes</td>
+          <td>-</td>
+          <td>Achievement name</td>
+      </tr>
+      <tr>
+          <td><code>description</code></td>
+          <td>string</td>
+          <td>No</td>
+          <td>-</td>
+          <td>Description text</td>
+      </tr>
+      <tr>
+          <td><code>requires</code></td>
+          <td>requirement</td>
+          <td>Yes</td>
+          <td>-</td>
+          <td>Unlock condition</td>
+      </tr>
+      <tr>
+          <td><code>grants_xp</code></td>
+          <td>number</td>
+          <td>No</td>
+          <td><code>0</code></td>
+          <td>XP reward when unlocked</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="requirement-types">Requirement Types<a class="anchor" href="#requirement-types">#</a></h2>
+<h3 id="resource-amount">Resource Amount<a class="anchor" href="#resource-amount">#</a></h3>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">achievement rich {
+  name: &#34;Getting Rich&#34;
+  description: &#34;Accumulate 1000 gold&#34;
+  requires: 1000 gold
+  grants_xp: 50
+}</code></pre><h3 id="generator-count">Generator Count<a class="anchor" href="#generator-count">#</a></h3>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">achievement miner_army {
+  name: &#34;Mining Army&#34;
+  description: &#34;Own 10 miners&#34;
+  requires: 10 miner
+  grants_xp: 25
+}</code></pre><h3 id="player-level">Player Level<a class="anchor" href="#player-level">#</a></h3>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">achievement leveled_up {
+  name: &#34;Level 10&#34;
+  description: &#34;Reach level 10&#34;
+  requires: level 10
+  grants_xp: 100
+}</code></pre><h2 id="examples">Examples<a class="anchor" href="#examples">#</a></h2>
+<h3 id="resource-milestones">Resource Milestones<a class="anchor" href="#resource-milestones">#</a></h3>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">achievement first_gold {
+  name: &#34;First Gold&#34;
+  description: &#34;Earn your first gold&#34;
+  requires: 1 gold
+  grants_xp: 10
+}
+
+achievement hundred_gold {
+  name: &#34;Coin Collector&#34;
+  description: &#34;Earn 100 gold&#34;
+  requires: 100 gold
+  grants_xp: 25
+}
+
+achievement thousand_gold {
+  name: &#34;Gold Hoarder&#34;
+  description: &#34;Earn 1,000 gold&#34;
+  requires: 1000 gold
+  grants_xp: 50
+}
+
+achievement million_gold {
+  name: &#34;Millionaire&#34;
+  description: &#34;Earn 1,000,000 gold&#34;
+  requires: 1000000 gold
+  grants_xp: 500
+}</code></pre><h3 id="generator-milestones">Generator Milestones<a class="anchor" href="#generator-milestones">#</a></h3>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">achievement first_miner {
+  name: &#34;First Employee&#34;
+  description: &#34;Hire your first miner&#34;
+  requires: 1 miner
+  grants_xp: 10
+}
+
+achievement ten_miners {
+  name: &#34;Small Business&#34;
+  description: &#34;Employ 10 miners&#34;
+  requires: 10 miner
+  grants_xp: 50
+}
+
+achievement hundred_miners {
+  name: &#34;Mining Corporation&#34;
+  description: &#34;Employ 100 miners&#34;
+  requires: 100 miner
+  grants_xp: 200
+}</code></pre><h2 id="display">Display<a class="anchor" href="#display">#</a></h2>
+<p>Achievements appear in the right panel below upgrades, showing:</p>
+<ul>
+<li>Locked achievements (grayed out with requirements)</li>
+<li>Unlocked achievements (highlighted)</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+
+
+
+
+  
+  
+  
+  <div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/docs/language/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Language Reference</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/docs/language/actions/" class="flex align-center">
+        <span>Actions</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+  
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#syntax">Syntax</a></li>
+    <li><a href="#properties">Properties</a></li>
+    <li><a href="#requirement-types">Requirement Types</a>
+      <ul>
+        <li><a href="#resource-amount">Resource Amount</a></li>
+        <li><a href="#generator-count">Generator Count</a></li>
+        <li><a href="#player-level">Player Level</a></li>
+      </ul>
+    </li>
+    <li><a href="#examples">Examples</a>
+      <ul>
+        <li><a href="#resource-milestones">Resource Milestones</a></li>
+        <li><a href="#generator-milestones">Generator Milestones</a></li>
+      </ul>
+    </li>
+    <li><a href="#display">Display</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

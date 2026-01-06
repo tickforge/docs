@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en-gb" dir="ltr">
+<head>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Actions# Actions are clickable buttons that produce resources when clicked.
+Syntax# action identifier { name: &#34;Display Name&#34; produces: amount resource grants_xp: number }Properties# Property Type Required Default Description name string Yes - Button label produces amount Yes - Resources gained per click grants_xp number No 0 XP gained per click Examples# Basic Action# action click { name: &#34;Click!&#34; produces: 1 gold }Action with XP# action mine { name: &#34;Mine Gold&#34; produces: 1 gold grants_xp: 1 }Multiple Actions# action mine_gold { name: &#34;Mine Gold&#34; produces: 1 gold grants_xp: 1 } action chop_wood { name: &#34;Chop Wood&#34; produces: 1 wood grants_xp: 1 } action fish { name: &#34;Fish&#34; produces: 1 fish grants_xp: 2 }Upgrading Actions# Use upgrades to increase action output:
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://docs.tickforge.io/docs/language/actions/">
+  <meta property="og:site_name" content="Tick Forge Documentation">
+  <meta property="og:title" content="Actions">
+  <meta property="og:description" content="Actions# Actions are clickable buttons that produce resources when clicked.
+Syntax# action identifier { name: &#34;Display Name&#34; produces: amount resource grants_xp: number }Properties# Property Type Required Default Description name string Yes - Button label produces amount Yes - Resources gained per click grants_xp number No 0 XP gained per click Examples# Basic Action# action click { name: &#34;Click!&#34; produces: 1 gold }Action with XP# action mine { name: &#34;Mine Gold&#34; produces: 1 gold grants_xp: 1 }Multiple Actions# action mine_gold { name: &#34;Mine Gold&#34; produces: 1 gold grants_xp: 1 } action chop_wood { name: &#34;Chop Wood&#34; produces: 1 wood grants_xp: 1 } action fish { name: &#34;Fish&#34; produces: 1 fish grants_xp: 2 }Upgrading Actions# Use upgrades to increase action output:">
+  <meta property="og:locale" content="en_gb">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+
+
+  <meta itemprop="name" content="Actions">
+  <meta itemprop="description" content="Actions# Actions are clickable buttons that produce resources when clicked.
+Syntax# action identifier { name: &#34;Display Name&#34; produces: amount resource grants_xp: number }Properties# Property Type Required Default Description name string Yes - Button label produces amount Yes - Resources gained per click grants_xp number No 0 XP gained per click Examples# Basic Action# action click { name: &#34;Click!&#34; produces: 1 gold }Action with XP# action mine { name: &#34;Mine Gold&#34; produces: 1 gold grants_xp: 1 }Multiple Actions# action mine_gold { name: &#34;Mine Gold&#34; produces: 1 gold grants_xp: 1 } action chop_wood { name: &#34;Chop Wood&#34; produces: 1 wood grants_xp: 1 } action fish { name: &#34;Fish&#34; produces: 1 fish grants_xp: 2 }Upgrading Actions# Use upgrades to increase action output:">
+  <meta itemprop="wordCount" content="190">
+
+<title>Actions | Tick Forge Documentation</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://docs.tickforge.io/docs/language/actions/">
+<link rel="stylesheet" href="/book.min.cc2c524ed250aac81b23d1f4af87344917b325208841feca0968fe450f570575.css" integrity="sha256-zCxSTtJQqsgbI9H0r4c0SRezJSCIQf7KCWj&#43;RQ9XBXU=" crossorigin="anonymous">
+
+
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.7644b4386e5e494963772a688fad4ef91a7711e49a774b7522c17f9ae8e87354.js" integrity="sha256-dkS0OG5eSUljdypoj61O&#43;Rp3EeSad0t1IsF/mujoc1Q=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-docs">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Tick Forge Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/getting-started/" class="">
+      Getting Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4be79ceb7c93731ea9ceaaf930a270db" class="toggle" checked />
+    <label for="section-4be79ceb7c93731ea9ceaaf930a270db" class="flex">
+      <a href="/docs/language/" class="">
+        Language Reference</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/achievements/" class="">
+      Achievements</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/actions/" class="active">
+      Actions</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/bank/" class="">
+      Bank</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/cheats/" class="">
+      Cheats</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/combat/" class="">
+      Combat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/endgame/" class="">
+      Endgame &amp; Credits</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/equipment/" class="">
+      Equipment</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/game/" class="">
+      Game Declaration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/generators/" class="">
+      Generators</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/items/" class="">
+      Items &amp; Inventory</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/locations/" class="">
+      Locations &amp; Nodes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/player/" class="">
+      Player</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/recipes/" class="">
+      Recipes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/resources/" class="">
+      Resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/skills/" class="">
+      Skills</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/themes/" class="">
+      Themes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/upgrades/" class="">
+      Upgrades</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/editor/" class="">
+      Editor Guide</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/platform/" class="">
+      Platform Features</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Actions</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#syntax">Syntax</a></li>
+    <li><a href="#properties">Properties</a></li>
+    <li><a href="#examples">Examples</a>
+      <ul>
+        <li><a href="#basic-action">Basic Action</a></li>
+        <li><a href="#action-with-xp">Action with XP</a></li>
+        <li><a href="#multiple-actions">Multiple Actions</a></li>
+      </ul>
+    </li>
+    <li><a href="#upgrading-actions">Upgrading Actions</a></li>
+    <li><a href="#display">Display</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="actions">Actions<a class="anchor" href="#actions">#</a></h1>
+<p>Actions are clickable buttons that produce resources when clicked.</p>
+<h2 id="syntax">Syntax<a class="anchor" href="#syntax">#</a></h2>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">action identifier {
+  name: &#34;Display Name&#34;
+  produces: amount resource
+  grants_xp: number
+}</code></pre><h2 id="properties">Properties<a class="anchor" href="#properties">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Required</th>
+          <th>Default</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>name</code></td>
+          <td>string</td>
+          <td>Yes</td>
+          <td>-</td>
+          <td>Button label</td>
+      </tr>
+      <tr>
+          <td><code>produces</code></td>
+          <td>amount</td>
+          <td>Yes</td>
+          <td>-</td>
+          <td>Resources gained per click</td>
+      </tr>
+      <tr>
+          <td><code>grants_xp</code></td>
+          <td>number</td>
+          <td>No</td>
+          <td><code>0</code></td>
+          <td>XP gained per click</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="examples">Examples<a class="anchor" href="#examples">#</a></h2>
+<h3 id="basic-action">Basic Action<a class="anchor" href="#basic-action">#</a></h3>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">action click {
+  name: &#34;Click!&#34;
+  produces: 1 gold
+}</code></pre><h3 id="action-with-xp">Action with XP<a class="anchor" href="#action-with-xp">#</a></h3>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">action mine {
+  name: &#34;Mine Gold&#34;
+  produces: 1 gold
+  grants_xp: 1
+}</code></pre><h3 id="multiple-actions">Multiple Actions<a class="anchor" href="#multiple-actions">#</a></h3>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">action mine_gold {
+  name: &#34;Mine Gold&#34;
+  produces: 1 gold
+  grants_xp: 1
+}
+
+action chop_wood {
+  name: &#34;Chop Wood&#34;
+  produces: 1 wood
+  grants_xp: 1
+}
+
+action fish {
+  name: &#34;Fish&#34;
+  produces: 1 fish
+  grants_xp: 2
+}</code></pre><h2 id="upgrading-actions">Upgrading Actions<a class="anchor" href="#upgrading-actions">#</a></h2>
+<p>Use upgrades to increase action output:</p>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">action click {
+  name: &#34;Click&#34;
+  produces: 1 gold
+}
+
+upgrade better_click {
+  name: &#34;Better Clicking&#34;
+  description: &#34;+1 gold per click&#34;
+  cost: 50 gold
+  effect: add click 1  # Now produces 2 gold
+}
+
+upgrade super_click {
+  name: &#34;Super Clicking&#34;
+  description: &#34;+5 gold per click&#34;
+  cost: 500 gold
+  effect: add click 5  # Now produces 7 gold
+}</code></pre><h2 id="display">Display<a class="anchor" href="#display">#</a></h2>
+<p>Actions appear in the left panel of the game view as large, clickable buttons.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+
+
+
+
+  
+  
+  
+  <div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/docs/language/achievements/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Achievements</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/docs/language/bank/" class="flex align-center">
+        <span>Bank</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+  
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#syntax">Syntax</a></li>
+    <li><a href="#properties">Properties</a></li>
+    <li><a href="#examples">Examples</a>
+      <ul>
+        <li><a href="#basic-action">Basic Action</a></li>
+        <li><a href="#action-with-xp">Action with XP</a></li>
+        <li><a href="#multiple-actions">Multiple Actions</a></li>
+      </ul>
+    </li>
+    <li><a href="#upgrading-actions">Upgrading Actions</a></li>
+    <li><a href="#display">Display</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

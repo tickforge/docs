@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en-gb" dir="ltr">
+<head>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="TickForge Language Reference# Complete documentation for the TickForge scripting language.
+Table of Contents# Core# Game Declaration - Game metadata, themes, and settings Resources - Defining accumulatable values Player - Player leveling system Gameplay# Actions - Clickable buttons Generators - Automatic production Upgrades - One-time purchases Achievements - Milestones and rewards RPG Systems# Skills - Skill-based progression Items &amp; Inventory - Item management Locations &amp; Nodes - World and gathering Combat - Enemies and fighting Recipes - Crafting system Equipment - Gear and bonuses Bank - Item storage Meta# Themes - Visual customization Cheats - Cheat codes Endgame &amp; Credits - Win conditions Syntax Overview# TickForge uses a block-based syntax:
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://docs.tickforge.io/docs/language/">
+  <meta property="og:site_name" content="Tick Forge Documentation">
+  <meta property="og:title" content="Language Reference">
+  <meta property="og:description" content="TickForge Language Reference# Complete documentation for the TickForge scripting language.
+Table of Contents# Core# Game Declaration - Game metadata, themes, and settings Resources - Defining accumulatable values Player - Player leveling system Gameplay# Actions - Clickable buttons Generators - Automatic production Upgrades - One-time purchases Achievements - Milestones and rewards RPG Systems# Skills - Skill-based progression Items &amp; Inventory - Item management Locations &amp; Nodes - World and gathering Combat - Enemies and fighting Recipes - Crafting system Equipment - Gear and bonuses Bank - Item storage Meta# Themes - Visual customization Cheats - Cheat codes Endgame &amp; Credits - Win conditions Syntax Overview# TickForge uses a block-based syntax:">
+  <meta property="og:locale" content="en_gb">
+  <meta property="og:type" content="website">
+
+
+  <meta itemprop="name" content="Language Reference">
+  <meta itemprop="description" content="TickForge Language Reference# Complete documentation for the TickForge scripting language.
+Table of Contents# Core# Game Declaration - Game metadata, themes, and settings Resources - Defining accumulatable values Player - Player leveling system Gameplay# Actions - Clickable buttons Generators - Automatic production Upgrades - One-time purchases Achievements - Milestones and rewards RPG Systems# Skills - Skill-based progression Items &amp; Inventory - Item management Locations &amp; Nodes - World and gathering Combat - Enemies and fighting Recipes - Crafting system Equipment - Gear and bonuses Bank - Item storage Meta# Themes - Visual customization Cheats - Cheat codes Endgame &amp; Credits - Win conditions Syntax Overview# TickForge uses a block-based syntax:">
+  <meta itemprop="wordCount" content="185">
+
+<title>Language Reference | Tick Forge Documentation</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://docs.tickforge.io/docs/language/">
+<link rel="stylesheet" href="/book.min.cc2c524ed250aac81b23d1f4af87344917b325208841feca0968fe450f570575.css" integrity="sha256-zCxSTtJQqsgbI9H0r4c0SRezJSCIQf7KCWj&#43;RQ9XBXU=" crossorigin="anonymous">
+
+
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.7644b4386e5e494963772a688fad4ef91a7711e49a774b7522c17f9ae8e87354.js" integrity="sha256-dkS0OG5eSUljdypoj61O&#43;Rp3EeSad0t1IsF/mujoc1Q=" crossorigin="anonymous"></script>
+
+
+<link rel="alternate" type="application/rss+xml" href="https://docs.tickforge.io/docs/language/index.xml" title="Tick Forge Documentation" />
+
+  
+</head>
+<body dir="ltr" class="book-kind-section book-type-docs">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Tick Forge Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/getting-started/" class="">
+      Getting Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4be79ceb7c93731ea9ceaaf930a270db" class="toggle" checked />
+    <label for="section-4be79ceb7c93731ea9ceaaf930a270db" class="flex">
+      <a href="/docs/language/" class="active">
+        Language Reference</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/achievements/" class="">
+      Achievements</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/actions/" class="">
+      Actions</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/bank/" class="">
+      Bank</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/cheats/" class="">
+      Cheats</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/combat/" class="">
+      Combat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/endgame/" class="">
+      Endgame &amp; Credits</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/equipment/" class="">
+      Equipment</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/game/" class="">
+      Game Declaration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/generators/" class="">
+      Generators</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/items/" class="">
+      Items &amp; Inventory</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/locations/" class="">
+      Locations &amp; Nodes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/player/" class="">
+      Player</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/recipes/" class="">
+      Recipes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/resources/" class="">
+      Resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/skills/" class="">
+      Skills</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/themes/" class="">
+      Themes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/upgrades/" class="">
+      Upgrades</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/editor/" class="">
+      Editor Guide</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/platform/" class="">
+      Platform Features</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Language Reference</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#table-of-contents">Table of Contents</a>
+      <ul>
+        <li><a href="#core">Core</a></li>
+        <li><a href="#gameplay">Gameplay</a></li>
+        <li><a href="#rpg-systems">RPG Systems</a></li>
+        <li><a href="#meta">Meta</a></li>
+      </ul>
+    </li>
+    <li><a href="#syntax-overview">Syntax Overview</a>
+      <ul>
+        <li><a href="#value-types">Value Types</a></li>
+        <li><a href="#comments">Comments</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="tickforge-language-reference">TickForge Language Reference<a class="anchor" href="#tickforge-language-reference">#</a></h1>
+<p>Complete documentation for the TickForge scripting language.</p>
+<h2 id="table-of-contents">Table of Contents<a class="anchor" href="#table-of-contents">#</a></h2>
+<h3 id="core">Core<a class="anchor" href="#core">#</a></h3>
+<ul>
+<li><a href="/game">Game Declaration</a> - Game metadata, themes, and settings</li>
+<li><a href="/resources">Resources</a> - Defining accumulatable values</li>
+<li><a href="/player">Player</a> - Player leveling system</li>
+</ul>
+<h3 id="gameplay">Gameplay<a class="anchor" href="#gameplay">#</a></h3>
+<ul>
+<li><a href="/actions">Actions</a> - Clickable buttons</li>
+<li><a href="/generators">Generators</a> - Automatic production</li>
+<li><a href="/upgrades">Upgrades</a> - One-time purchases</li>
+<li><a href="/achievements">Achievements</a> - Milestones and rewards</li>
+</ul>
+<h3 id="rpg-systems">RPG Systems<a class="anchor" href="#rpg-systems">#</a></h3>
+<ul>
+<li><a href="/skills">Skills</a> - Skill-based progression</li>
+<li><a href="/items">Items &amp; Inventory</a> - Item management</li>
+<li><a href="/locations">Locations &amp; Nodes</a> - World and gathering</li>
+<li><a href="/combat">Combat</a> - Enemies and fighting</li>
+<li><a href="/recipes">Recipes</a> - Crafting system</li>
+<li><a href="/equipment">Equipment</a> - Gear and bonuses</li>
+<li><a href="/bank">Bank</a> - Item storage</li>
+</ul>
+<h3 id="meta">Meta<a class="anchor" href="#meta">#</a></h3>
+<ul>
+<li><a href="/themes">Themes</a> - Visual customization</li>
+<li><a href="/cheats">Cheats</a> - Cheat codes</li>
+<li><a href="/endgame">Endgame &amp; Credits</a> - Win conditions</li>
+</ul>
+<h2 id="syntax-overview">Syntax Overview<a class="anchor" href="#syntax-overview">#</a></h2>
+<p>TickForge uses a block-based syntax:</p>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs"># This is a comment
+
+keyword identifier {
+  property: value
+  another_property: &#34;string value&#34;
+  numeric_property: 100
+}</code></pre><h3 id="value-types">Value Types<a class="anchor" href="#value-types">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>Example</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>String</td>
+          <td><code>&quot;Hello World&quot;</code></td>
+          <td>Text in double quotes</td>
+      </tr>
+      <tr>
+          <td>Number</td>
+          <td><code>100</code>, <code>1.5</code></td>
+          <td>Integers or decimals</td>
+      </tr>
+      <tr>
+          <td>Identifier</td>
+          <td><code>gold</code>, <code>my_resource</code></td>
+          <td>Names (letters, numbers, underscores)</td>
+      </tr>
+      <tr>
+          <td>Amount</td>
+          <td><code>10 gold</code></td>
+          <td>Number followed by resource/item ID</td>
+      </tr>
+      <tr>
+          <td>Requirement</td>
+          <td><code>level 5</code>, <code>10 gold</code></td>
+          <td>Level or count requirement</td>
+      </tr>
+      <tr>
+          <td>Effect</td>
+          <td><code>multiply miner 2</code></td>
+          <td>Modification effect</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="comments">Comments<a class="anchor" href="#comments">#</a></h3>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs"># Single line comment
+
+# Multi-line comments use
+# multiple single-line comments</code></pre></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+
+
+
+
+  
+  
+  
+  <div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/docs/getting-started/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Getting Started</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/docs/language/achievements/" class="flex align-center">
+        <span>Achievements</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+  
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#table-of-contents">Table of Contents</a>
+      <ul>
+        <li><a href="#core">Core</a></li>
+        <li><a href="#gameplay">Gameplay</a></li>
+        <li><a href="#rpg-systems">RPG Systems</a></li>
+        <li><a href="#meta">Meta</a></li>
+      </ul>
+    </li>
+    <li><a href="#syntax-overview">Syntax Overview</a>
+      <ul>
+        <li><a href="#value-types">Value Types</a></li>
+        <li><a href="#comments">Comments</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

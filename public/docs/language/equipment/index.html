@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en-gb" dir="ltr">
+<head>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Equipment# Equipment items provide stat bonuses when worn.
+Syntax# equipment identifier { name: &#34;Display Name&#34; icon: &#34;X&#34; description: &#34;Description&#34; slot: slot_type requires_skill: skill level attack_bonus: number strength_bonus: number defence_bonus: number }Properties# Property Type Required Default Description name string Yes - Display name icon string Yes - Icon/emoji description string No - Description slot slot type Yes - Equipment slot requires_skill skill level No - Skill requirement attack_bonus number No 0 Attack accuracy bonus strength_bonus number No 0 Damage bonus defence_bonus number No 0 Defense bonus Equipment Slots# Slot Description head Helmets, hats cape Capes, cloaks neck Necklaces, amulets weapon Swords, axes, bows body Chestplates, robes shield Shields, defenders legs Platelegs, robes hands Gloves, gauntlets feet Boots ring Rings ammo Arrows, bolts Examples# Weapons# equipment bronze_sword { name: &#34;Bronze Sword&#34; icon: &#34;🗡️&#34; description: &#34;A basic bronze sword&#34; slot: weapon requires_skill: attack 1 attack_bonus: 4 strength_bonus: 3 defence_bonus: 0 } equipment iron_sword { name: &#34;Iron Sword&#34; icon: &#34;🗡️&#34; description: &#34;A sturdy iron sword&#34; slot: weapon requires_skill: attack 10 attack_bonus: 10 strength_bonus: 8 defence_bonus: 0 } equipment rune_scimitar { name: &#34;Rune Scimitar&#34; icon: &#34;⚔️&#34; description: &#34;A powerful rune blade&#34; slot: weapon requires_skill: attack 40 attack_bonus: 45 strength_bonus: 44 defence_bonus: 0 }Armor# equipment bronze_helm { name: &#34;Bronze Helm&#34; icon: &#34;🪖&#34; slot: head requires_skill: defence 1 defence_bonus: 3 } equipment iron_platebody { name: &#34;Iron Platebody&#34; icon: &#34;🛡️&#34; slot: body requires_skill: defence 10 defence_bonus: 20 } equipment rune_platelegs { name: &#34;Rune Platelegs&#34; icon: &#34;🦵&#34; slot: legs requires_skill: defence 40 defence_bonus: 51 }Accessories# equipment amulet_of_power { name: &#34;Amulet of Power&#34; icon: &#34;📿&#34; slot: neck attack_bonus: 6 strength_bonus: 6 defence_bonus: 6 } equipment ring_of_wealth { name: &#34;Ring of Wealth&#34; icon: &#34;💍&#34; description: &#34;Increases luck&#34; slot: ring }Obtaining Equipment# Equipment must be defined both as an item and equipment:
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://docs.tickforge.io/docs/language/equipment/">
+  <meta property="og:site_name" content="Tick Forge Documentation">
+  <meta property="og:title" content="Equipment">
+  <meta property="og:description" content="Equipment# Equipment items provide stat bonuses when worn.
+Syntax# equipment identifier { name: &#34;Display Name&#34; icon: &#34;X&#34; description: &#34;Description&#34; slot: slot_type requires_skill: skill level attack_bonus: number strength_bonus: number defence_bonus: number }Properties# Property Type Required Default Description name string Yes - Display name icon string Yes - Icon/emoji description string No - Description slot slot type Yes - Equipment slot requires_skill skill level No - Skill requirement attack_bonus number No 0 Attack accuracy bonus strength_bonus number No 0 Damage bonus defence_bonus number No 0 Defense bonus Equipment Slots# Slot Description head Helmets, hats cape Capes, cloaks neck Necklaces, amulets weapon Swords, axes, bows body Chestplates, robes shield Shields, defenders legs Platelegs, robes hands Gloves, gauntlets feet Boots ring Rings ammo Arrows, bolts Examples# Weapons# equipment bronze_sword { name: &#34;Bronze Sword&#34; icon: &#34;🗡️&#34; description: &#34;A basic bronze sword&#34; slot: weapon requires_skill: attack 1 attack_bonus: 4 strength_bonus: 3 defence_bonus: 0 } equipment iron_sword { name: &#34;Iron Sword&#34; icon: &#34;🗡️&#34; description: &#34;A sturdy iron sword&#34; slot: weapon requires_skill: attack 10 attack_bonus: 10 strength_bonus: 8 defence_bonus: 0 } equipment rune_scimitar { name: &#34;Rune Scimitar&#34; icon: &#34;⚔️&#34; description: &#34;A powerful rune blade&#34; slot: weapon requires_skill: attack 40 attack_bonus: 45 strength_bonus: 44 defence_bonus: 0 }Armor# equipment bronze_helm { name: &#34;Bronze Helm&#34; icon: &#34;🪖&#34; slot: head requires_skill: defence 1 defence_bonus: 3 } equipment iron_platebody { name: &#34;Iron Platebody&#34; icon: &#34;🛡️&#34; slot: body requires_skill: defence 10 defence_bonus: 20 } equipment rune_platelegs { name: &#34;Rune Platelegs&#34; icon: &#34;🦵&#34; slot: legs requires_skill: defence 40 defence_bonus: 51 }Accessories# equipment amulet_of_power { name: &#34;Amulet of Power&#34; icon: &#34;📿&#34; slot: neck attack_bonus: 6 strength_bonus: 6 defence_bonus: 6 } equipment ring_of_wealth { name: &#34;Ring of Wealth&#34; icon: &#34;💍&#34; description: &#34;Increases luck&#34; slot: ring }Obtaining Equipment# Equipment must be defined both as an item and equipment:">
+  <meta property="og:locale" content="en_gb">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+
+
+  <meta itemprop="name" content="Equipment">
+  <meta itemprop="description" content="Equipment# Equipment items provide stat bonuses when worn.
+Syntax# equipment identifier { name: &#34;Display Name&#34; icon: &#34;X&#34; description: &#34;Description&#34; slot: slot_type requires_skill: skill level attack_bonus: number strength_bonus: number defence_bonus: number }Properties# Property Type Required Default Description name string Yes - Display name icon string Yes - Icon/emoji description string No - Description slot slot type Yes - Equipment slot requires_skill skill level No - Skill requirement attack_bonus number No 0 Attack accuracy bonus strength_bonus number No 0 Damage bonus defence_bonus number No 0 Defense bonus Equipment Slots# Slot Description head Helmets, hats cape Capes, cloaks neck Necklaces, amulets weapon Swords, axes, bows body Chestplates, robes shield Shields, defenders legs Platelegs, robes hands Gloves, gauntlets feet Boots ring Rings ammo Arrows, bolts Examples# Weapons# equipment bronze_sword { name: &#34;Bronze Sword&#34; icon: &#34;🗡️&#34; description: &#34;A basic bronze sword&#34; slot: weapon requires_skill: attack 1 attack_bonus: 4 strength_bonus: 3 defence_bonus: 0 } equipment iron_sword { name: &#34;Iron Sword&#34; icon: &#34;🗡️&#34; description: &#34;A sturdy iron sword&#34; slot: weapon requires_skill: attack 10 attack_bonus: 10 strength_bonus: 8 defence_bonus: 0 } equipment rune_scimitar { name: &#34;Rune Scimitar&#34; icon: &#34;⚔️&#34; description: &#34;A powerful rune blade&#34; slot: weapon requires_skill: attack 40 attack_bonus: 45 strength_bonus: 44 defence_bonus: 0 }Armor# equipment bronze_helm { name: &#34;Bronze Helm&#34; icon: &#34;🪖&#34; slot: head requires_skill: defence 1 defence_bonus: 3 } equipment iron_platebody { name: &#34;Iron Platebody&#34; icon: &#34;🛡️&#34; slot: body requires_skill: defence 10 defence_bonus: 20 } equipment rune_platelegs { name: &#34;Rune Platelegs&#34; icon: &#34;🦵&#34; slot: legs requires_skill: defence 40 defence_bonus: 51 }Accessories# equipment amulet_of_power { name: &#34;Amulet of Power&#34; icon: &#34;📿&#34; slot: neck attack_bonus: 6 strength_bonus: 6 defence_bonus: 6 } equipment ring_of_wealth { name: &#34;Ring of Wealth&#34; icon: &#34;💍&#34; description: &#34;Increases luck&#34; slot: ring }Obtaining Equipment# Equipment must be defined both as an item and equipment:">
+  <meta itemprop="wordCount" content="354">
+
+<title>Equipment | Tick Forge Documentation</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://docs.tickforge.io/docs/language/equipment/">
+<link rel="stylesheet" href="/book.min.cc2c524ed250aac81b23d1f4af87344917b325208841feca0968fe450f570575.css" integrity="sha256-zCxSTtJQqsgbI9H0r4c0SRezJSCIQf7KCWj&#43;RQ9XBXU=" crossorigin="anonymous">
+
+
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.7644b4386e5e494963772a688fad4ef91a7711e49a774b7522c17f9ae8e87354.js" integrity="sha256-dkS0OG5eSUljdypoj61O&#43;Rp3EeSad0t1IsF/mujoc1Q=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-docs">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Tick Forge Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/getting-started/" class="">
+      Getting Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4be79ceb7c93731ea9ceaaf930a270db" class="toggle" checked />
+    <label for="section-4be79ceb7c93731ea9ceaaf930a270db" class="flex">
+      <a href="/docs/language/" class="">
+        Language Reference</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/achievements/" class="">
+      Achievements</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/actions/" class="">
+      Actions</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/bank/" class="">
+      Bank</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/cheats/" class="">
+      Cheats</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/combat/" class="">
+      Combat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/endgame/" class="">
+      Endgame &amp; Credits</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/equipment/" class="active">
+      Equipment</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/game/" class="">
+      Game Declaration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/generators/" class="">
+      Generators</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/items/" class="">
+      Items &amp; Inventory</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/locations/" class="">
+      Locations &amp; Nodes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/player/" class="">
+      Player</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/recipes/" class="">
+      Recipes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/resources/" class="">
+      Resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/skills/" class="">
+      Skills</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/themes/" class="">
+      Themes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/upgrades/" class="">
+      Upgrades</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/editor/" class="">
+      Editor Guide</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/platform/" class="">
+      Platform Features</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Equipment</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#syntax">Syntax</a></li>
+    <li><a href="#properties">Properties</a></li>
+    <li><a href="#equipment-slots">Equipment Slots</a></li>
+    <li><a href="#examples">Examples</a>
+      <ul>
+        <li><a href="#weapons">Weapons</a></li>
+        <li><a href="#armor">Armor</a></li>
+        <li><a href="#accessories">Accessories</a></li>
+      </ul>
+    </li>
+    <li><a href="#obtaining-equipment">Obtaining Equipment</a></li>
+    <li><a href="#display">Display</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="equipment">Equipment<a class="anchor" href="#equipment">#</a></h1>
+<p>Equipment items provide stat bonuses when worn.</p>
+<h2 id="syntax">Syntax<a class="anchor" href="#syntax">#</a></h2>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">equipment identifier {
+  name: &#34;Display Name&#34;
+  icon: &#34;X&#34;
+  description: &#34;Description&#34;
+  slot: slot_type
+  requires_skill: skill level
+  attack_bonus: number
+  strength_bonus: number
+  defence_bonus: number
+}</code></pre><h2 id="properties">Properties<a class="anchor" href="#properties">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Required</th>
+          <th>Default</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>name</code></td>
+          <td>string</td>
+          <td>Yes</td>
+          <td>-</td>
+          <td>Display name</td>
+      </tr>
+      <tr>
+          <td><code>icon</code></td>
+          <td>string</td>
+          <td>Yes</td>
+          <td>-</td>
+          <td>Icon/emoji</td>
+      </tr>
+      <tr>
+          <td><code>description</code></td>
+          <td>string</td>
+          <td>No</td>
+          <td>-</td>
+          <td>Description</td>
+      </tr>
+      <tr>
+          <td><code>slot</code></td>
+          <td>slot type</td>
+          <td>Yes</td>
+          <td>-</td>
+          <td>Equipment slot</td>
+      </tr>
+      <tr>
+          <td><code>requires_skill</code></td>
+          <td>skill level</td>
+          <td>No</td>
+          <td>-</td>
+          <td>Skill requirement</td>
+      </tr>
+      <tr>
+          <td><code>attack_bonus</code></td>
+          <td>number</td>
+          <td>No</td>
+          <td><code>0</code></td>
+          <td>Attack accuracy bonus</td>
+      </tr>
+      <tr>
+          <td><code>strength_bonus</code></td>
+          <td>number</td>
+          <td>No</td>
+          <td><code>0</code></td>
+          <td>Damage bonus</td>
+      </tr>
+      <tr>
+          <td><code>defence_bonus</code></td>
+          <td>number</td>
+          <td>No</td>
+          <td><code>0</code></td>
+          <td>Defense bonus</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="equipment-slots">Equipment Slots<a class="anchor" href="#equipment-slots">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>Slot</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>head</code></td>
+          <td>Helmets, hats</td>
+      </tr>
+      <tr>
+          <td><code>cape</code></td>
+          <td>Capes, cloaks</td>
+      </tr>
+      <tr>
+          <td><code>neck</code></td>
+          <td>Necklaces, amulets</td>
+      </tr>
+      <tr>
+          <td><code>weapon</code></td>
+          <td>Swords, axes, bows</td>
+      </tr>
+      <tr>
+          <td><code>body</code></td>
+          <td>Chestplates, robes</td>
+      </tr>
+      <tr>
+          <td><code>shield</code></td>
+          <td>Shields, defenders</td>
+      </tr>
+      <tr>
+          <td><code>legs</code></td>
+          <td>Platelegs, robes</td>
+      </tr>
+      <tr>
+          <td><code>hands</code></td>
+          <td>Gloves, gauntlets</td>
+      </tr>
+      <tr>
+          <td><code>feet</code></td>
+          <td>Boots</td>
+      </tr>
+      <tr>
+          <td><code>ring</code></td>
+          <td>Rings</td>
+      </tr>
+      <tr>
+          <td><code>ammo</code></td>
+          <td>Arrows, bolts</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="examples">Examples<a class="anchor" href="#examples">#</a></h2>
+<h3 id="weapons">Weapons<a class="anchor" href="#weapons">#</a></h3>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">equipment bronze_sword {
+  name: &#34;Bronze Sword&#34;
+  icon: &#34;🗡️&#34;
+  description: &#34;A basic bronze sword&#34;
+  slot: weapon
+  requires_skill: attack 1
+  attack_bonus: 4
+  strength_bonus: 3
+  defence_bonus: 0
+}
+
+equipment iron_sword {
+  name: &#34;Iron Sword&#34;
+  icon: &#34;🗡️&#34;
+  description: &#34;A sturdy iron sword&#34;
+  slot: weapon
+  requires_skill: attack 10
+  attack_bonus: 10
+  strength_bonus: 8
+  defence_bonus: 0
+}
+
+equipment rune_scimitar {
+  name: &#34;Rune Scimitar&#34;
+  icon: &#34;⚔️&#34;
+  description: &#34;A powerful rune blade&#34;
+  slot: weapon
+  requires_skill: attack 40
+  attack_bonus: 45
+  strength_bonus: 44
+  defence_bonus: 0
+}</code></pre><h3 id="armor">Armor<a class="anchor" href="#armor">#</a></h3>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">equipment bronze_helm {
+  name: &#34;Bronze Helm&#34;
+  icon: &#34;🪖&#34;
+  slot: head
+  requires_skill: defence 1
+  defence_bonus: 3
+}
+
+equipment iron_platebody {
+  name: &#34;Iron Platebody&#34;
+  icon: &#34;🛡️&#34;
+  slot: body
+  requires_skill: defence 10
+  defence_bonus: 20
+}
+
+equipment rune_platelegs {
+  name: &#34;Rune Platelegs&#34;
+  icon: &#34;🦵&#34;
+  slot: legs
+  requires_skill: defence 40
+  defence_bonus: 51
+}</code></pre><h3 id="accessories">Accessories<a class="anchor" href="#accessories">#</a></h3>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">equipment amulet_of_power {
+  name: &#34;Amulet of Power&#34;
+  icon: &#34;📿&#34;
+  slot: neck
+  attack_bonus: 6
+  strength_bonus: 6
+  defence_bonus: 6
+}
+
+equipment ring_of_wealth {
+  name: &#34;Ring of Wealth&#34;
+  icon: &#34;💍&#34;
+  description: &#34;Increases luck&#34;
+  slot: ring
+}</code></pre><h2 id="obtaining-equipment">Obtaining Equipment<a class="anchor" href="#obtaining-equipment">#</a></h2>
+<p>Equipment must be defined both as an <code>item</code> and <code>equipment</code>:</p>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs"># Define the item
+item bronze_sword {
+  name: &#34;Bronze Sword&#34;
+  icon: &#34;🗡️&#34;
+  stackable: 0
+  value: 50
+}
+
+# Define equipment stats
+equipment bronze_sword {
+  name: &#34;Bronze Sword&#34;
+  icon: &#34;🗡️&#34;
+  slot: weapon
+  attack_bonus: 4
+  strength_bonus: 3
+}</code></pre><p>Equipment can be obtained via:</p>
+<ul>
+<li>Crafting recipes</li>
+<li>Enemy drops</li>
+<li>Purchased from shops (future feature)</li>
+</ul>
+<h2 id="display">Display<a class="anchor" href="#display">#</a></h2>
+<p>Equipment panel shows:</p>
+<ul>
+<li>Equipment slots grid</li>
+<li>Currently equipped items</li>
+<li>Click to equip/unequip from inventory</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+
+
+
+
+  
+  
+  
+  <div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/docs/language/endgame/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Endgame &amp; Credits</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/docs/language/game/" class="flex align-center">
+        <span>Game Declaration</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+  
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#syntax">Syntax</a></li>
+    <li><a href="#properties">Properties</a></li>
+    <li><a href="#equipment-slots">Equipment Slots</a></li>
+    <li><a href="#examples">Examples</a>
+      <ul>
+        <li><a href="#weapons">Weapons</a></li>
+        <li><a href="#armor">Armor</a></li>
+        <li><a href="#accessories">Accessories</a></li>
+      </ul>
+    </li>
+    <li><a href="#obtaining-equipment">Obtaining Equipment</a></li>
+    <li><a href="#display">Display</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en-gb" dir="ltr">
+<head>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Platform Features# Overview of the TickForge web platform capabilities.
+Playing Games# Drag and Drop# Visit tickforge.io Drag a .tfs file onto the drop zone Game loads and starts automatically File Browser# Click the drop zone Select a .tfs file from your computer Game loads and starts Example Games# Click example buttons on the landing page to try pre-built games:
+Cookie Clicker - Classic incremental game Save System# Exporting Saves# While playing, click Save in the header Save data is copied to clipboard (base64 encoded) Paste and store somewhere safe Importing Saves# Click Load in the header Paste your save data Click “Load Save” Game state restores Save Data Format# Saves are base64-encoded JSON containing:
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://docs.tickforge.io/docs/platform/">
+  <meta property="og:site_name" content="Tick Forge Documentation">
+  <meta property="og:title" content="Platform Features">
+  <meta property="og:description" content="Platform Features# Overview of the TickForge web platform capabilities.
+Playing Games# Drag and Drop# Visit tickforge.io Drag a .tfs file onto the drop zone Game loads and starts automatically File Browser# Click the drop zone Select a .tfs file from your computer Game loads and starts Example Games# Click example buttons on the landing page to try pre-built games:
+Cookie Clicker - Classic incremental game Save System# Exporting Saves# While playing, click Save in the header Save data is copied to clipboard (base64 encoded) Paste and store somewhere safe Importing Saves# Click Load in the header Paste your save data Click “Load Save” Game state restores Save Data Format# Saves are base64-encoded JSON containing:">
+  <meta property="og:locale" content="en_gb">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+
+
+  <meta itemprop="name" content="Platform Features">
+  <meta itemprop="description" content="Platform Features# Overview of the TickForge web platform capabilities.
+Playing Games# Drag and Drop# Visit tickforge.io Drag a .tfs file onto the drop zone Game loads and starts automatically File Browser# Click the drop zone Select a .tfs file from your computer Game loads and starts Example Games# Click example buttons on the landing page to try pre-built games:
+Cookie Clicker - Classic incremental game Save System# Exporting Saves# While playing, click Save in the header Save data is copied to clipboard (base64 encoded) Paste and store somewhere safe Importing Saves# Click Load in the header Paste your save data Click “Load Save” Game state restores Save Data Format# Saves are base64-encoded JSON containing:">
+  <meta itemprop="wordCount" content="322">
+
+<title>Platform Features | Tick Forge Documentation</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://docs.tickforge.io/docs/platform/">
+<link rel="stylesheet" href="/book.min.cc2c524ed250aac81b23d1f4af87344917b325208841feca0968fe450f570575.css" integrity="sha256-zCxSTtJQqsgbI9H0r4c0SRezJSCIQf7KCWj&#43;RQ9XBXU=" crossorigin="anonymous">
+
+
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.7644b4386e5e494963772a688fad4ef91a7711e49a774b7522c17f9ae8e87354.js" integrity="sha256-dkS0OG5eSUljdypoj61O&#43;Rp3EeSad0t1IsF/mujoc1Q=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-docs">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Tick Forge Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/getting-started/" class="">
+      Getting Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4be79ceb7c93731ea9ceaaf930a270db" class="toggle"  />
+    <label for="section-4be79ceb7c93731ea9ceaaf930a270db" class="flex">
+      <a href="/docs/language/" class="">
+        Language Reference</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/achievements/" class="">
+      Achievements</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/actions/" class="">
+      Actions</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/bank/" class="">
+      Bank</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/cheats/" class="">
+      Cheats</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/combat/" class="">
+      Combat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/endgame/" class="">
+      Endgame &amp; Credits</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/equipment/" class="">
+      Equipment</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/game/" class="">
+      Game Declaration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/generators/" class="">
+      Generators</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/items/" class="">
+      Items &amp; Inventory</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/locations/" class="">
+      Locations &amp; Nodes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/player/" class="">
+      Player</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/recipes/" class="">
+      Recipes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/resources/" class="">
+      Resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/skills/" class="">
+      Skills</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/themes/" class="">
+      Themes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/upgrades/" class="">
+      Upgrades</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/editor/" class="">
+      Editor Guide</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/platform/" class="active">
+      Platform Features</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Platform Features</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#playing-games">Playing Games</a>
+      <ul>
+        <li><a href="#drag-and-drop">Drag and Drop</a></li>
+        <li><a href="#file-browser">File Browser</a></li>
+        <li><a href="#example-games">Example Games</a></li>
+      </ul>
+    </li>
+    <li><a href="#save-system">Save System</a>
+      <ul>
+        <li><a href="#exporting-saves">Exporting Saves</a></li>
+        <li><a href="#importing-saves">Importing Saves</a></li>
+        <li><a href="#save-data-format">Save Data Format</a></li>
+      </ul>
+    </li>
+    <li><a href="#game-info">Game Info</a></li>
+    <li><a href="#themes">Themes</a></li>
+    <li><a href="#navigation">Navigation</a>
+      <ul>
+        <li><a href="#header">Header</a></li>
+        <li><a href="#tabs-rpg-games">Tabs (RPG Games)</a></li>
+      </ul>
+    </li>
+    <li><a href="#technical-details">Technical Details</a>
+      <ul>
+        <li><a href="#data-storage">Data Storage</a></li>
+        <li><a href="#performance">Performance</a></li>
+      </ul>
+    </li>
+    <li><a href="#limitations">Limitations</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="platform-features">Platform Features<a class="anchor" href="#platform-features">#</a></h1>
+<p>Overview of the TickForge web platform capabilities.</p>
+<h2 id="playing-games">Playing Games<a class="anchor" href="#playing-games">#</a></h2>
+<h3 id="drag-and-drop">Drag and Drop<a class="anchor" href="#drag-and-drop">#</a></h3>
+<ol>
+<li>Visit <a href="https://tickforge.io">tickforge.io</a></li>
+<li>Drag a <code>.tfs</code> file onto the drop zone</li>
+<li>Game loads and starts automatically</li>
+</ol>
+<h3 id="file-browser">File Browser<a class="anchor" href="#file-browser">#</a></h3>
+<ol>
+<li>Click the drop zone</li>
+<li>Select a <code>.tfs</code> file from your computer</li>
+<li>Game loads and starts</li>
+</ol>
+<h3 id="example-games">Example Games<a class="anchor" href="#example-games">#</a></h3>
+<p>Click example buttons on the landing page to try pre-built games:</p>
+<ul>
+<li><strong>Cookie Clicker</strong> - Classic incremental game</li>
+</ul>
+<h2 id="save-system">Save System<a class="anchor" href="#save-system">#</a></h2>
+<h3 id="exporting-saves">Exporting Saves<a class="anchor" href="#exporting-saves">#</a></h3>
+<ol>
+<li>While playing, click <strong>Save</strong> in the header</li>
+<li>Save data is copied to clipboard (base64 encoded)</li>
+<li>Paste and store somewhere safe</li>
+</ol>
+<h3 id="importing-saves">Importing Saves<a class="anchor" href="#importing-saves">#</a></h3>
+<ol>
+<li>Click <strong>Load</strong> in the header</li>
+<li>Paste your save data</li>
+<li>Click &ldquo;Load Save&rdquo;</li>
+<li>Game state restores</li>
+</ol>
+<h3 id="save-data-format">Save Data Format<a class="anchor" href="#save-data-format">#</a></h3>
+<p>Saves are base64-encoded JSON containing:</p>
+<ul>
+<li>Resource amounts</li>
+<li>Generator counts</li>
+<li>Purchased upgrades</li>
+<li>Unlocked achievements</li>
+<li>Player level/XP</li>
+<li>Skill levels (for RPG games)</li>
+<li>Inventory contents</li>
+<li>Equipment</li>
+<li>Current location</li>
+</ul>
+<h2 id="game-info">Game Info<a class="anchor" href="#game-info">#</a></h2>
+<p>If a game defines author/description/links:</p>
+<ol>
+<li>An <strong>i</strong> button appears in the header</li>
+<li>Click to view game info modal</li>
+<li>Links open in new tabs</li>
+</ol>
+<h2 id="themes">Themes<a class="anchor" href="#themes">#</a></h2>
+<p>Games can specify visual themes - we will make these suck less over time :)</p>
+<ul>
+<li><code>default</code> - tickforge default</li>
+<li><code>cookie</code> - Warm browns</li>
+<li><code>dark-souls</code> - Dark with embers</li>
+<li><code>retro-green</code> - Terminal style</li>
+<li><code>neon-cyber</code> - Cyberpunk</li>
+<li><code>fantasy</code> - Medieval RPG</li>
+</ul>
+<h2 id="navigation">Navigation<a class="anchor" href="#navigation">#</a></h2>
+<h3 id="header">Header<a class="anchor" href="#header">#</a></h3>
+<ul>
+<li><strong>Back arrow</strong> - Return to landing page</li>
+<li><strong>Game title</strong> - Current game name</li>
+<li><strong>Info button</strong> - Game details (if available)</li>
+<li><strong>Save/Load</strong> - Export/import progress</li>
+<li><strong>Bank</strong> - Item storage (if available)</li>
+<li><strong>Level display</strong> - Player progress</li>
+</ul>
+<h3 id="tabs-rpg-games">Tabs (RPG Games)<a class="anchor" href="#tabs-rpg-games">#</a></h3>
+<p>RPG-style games show tabs:</p>
+<ul>
+<li><strong>Game</strong> - Main idle mechanics</li>
+<li><strong>Skills</strong> - Skill levels and XP</li>
+<li><strong>Inventory</strong> - Item management</li>
+<li><strong>Map</strong> - World navigation</li>
+<li><strong>Combat</strong> - Fighting enemies</li>
+<li><strong>Crafting</strong> - Recipe crafting</li>
+</ul>
+<h2 id="technical-details">Technical Details<a class="anchor" href="#technical-details">#</a></h2>
+<h3 id="data-storage">Data Storage<a class="anchor" href="#data-storage">#</a></h3>
+<ul>
+<li>No server-side storage</li>
+<li>All data is client-side</li>
+<li>Use Save/Load for persistence</li>
+</ul>
+<h3 id="performance">Performance<a class="anchor" href="#performance">#</a></h3>
+<ul>
+<li>Games run at a configurable discrete tick rate</li>
+<li>UI updates on each tick</li>
+<li>Optimized for thousands of generators</li>
+</ul>
+<h2 id="limitations">Limitations<a class="anchor" href="#limitations">#</a></h2>
+<ul>
+<li>Single game at a time</li>
+<li>No cloud saves</li>
+<li>No multiplayer</li>
+<li>No achievements sync</li>
+<li>No game discovery/sharing (yet)</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+
+
+
+
+  
+  
+  
+  <div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/docs/editor/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Editor Guide</span>
+      </a>
+    
+    </span>
+    <span>
+    
+    </span>
+  </div>
+  
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#playing-games">Playing Games</a>
+      <ul>
+        <li><a href="#drag-and-drop">Drag and Drop</a></li>
+        <li><a href="#file-browser">File Browser</a></li>
+        <li><a href="#example-games">Example Games</a></li>
+      </ul>
+    </li>
+    <li><a href="#save-system">Save System</a>
+      <ul>
+        <li><a href="#exporting-saves">Exporting Saves</a></li>
+        <li><a href="#importing-saves">Importing Saves</a></li>
+        <li><a href="#save-data-format">Save Data Format</a></li>
+      </ul>
+    </li>
+    <li><a href="#game-info">Game Info</a></li>
+    <li><a href="#themes">Themes</a></li>
+    <li><a href="#navigation">Navigation</a>
+      <ul>
+        <li><a href="#header">Header</a></li>
+        <li><a href="#tabs-rpg-games">Tabs (RPG Games)</a></li>
+      </ul>
+    </li>
+    <li><a href="#technical-details">Technical Details</a>
+      <ul>
+        <li><a href="#data-storage">Data Storage</a></li>
+        <li><a href="#performance">Performance</a></li>
+      </ul>
+    </li>
+    <li><a href="#limitations">Limitations</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

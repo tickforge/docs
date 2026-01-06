@@ -1,0 +1,5 @@
+baseURL = "https://docs.tickforge.io/"
+relativeURLs = true
+languageCode = "en-gb"
+title = "Tick Forge Documentation"
+theme = "hugo-book"

@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en-gb" dir="ltr">
+<head>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Bank# The bank provides additional storage for items beyond inventory.
+Syntax# bank { slots: 800 }Properties# Property Type Default Description slots number 800 Maximum unique item types Usage# Click the Bank button in the game header Bank modal shows: Stored items (click to select, then withdraw) Inventory items available to deposit Deposit# Click an inventory item in the bank modal Choose “Deposit 1” or “Deposit All” Withdraw# Click a bank item to select it Click “Take 1” or “Take All” Items go to inventory (requires free slots) Example# inventory { slots: 28 } bank { slots: 400 } # Items that can be stored item gold_ore { name: &#34;Gold Ore&#34; icon: &#34;🪨&#34; stackable: 1 } item gold_bar { name: &#34;Gold Bar&#34; icon: &#34;🟡&#34; stackable: 1 }Notes# Bank items stack regardless of item’s stackable property Each unique item type uses one bank “slot” Bank is shared across all items (no tabs) Bank button only appears if bank is defined Differences from Inventory# Feature Inventory Bank Access Always available Modal popup Stacking Per-item setting Always stacks Slots Limited Large capacity Equipment Can equip from Cannot equip from Crafting Uses inventory Cannot use bank ">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://docs.tickforge.io/docs/language/bank/">
+  <meta property="og:site_name" content="Tick Forge Documentation">
+  <meta property="og:title" content="Bank">
+  <meta property="og:description" content="Bank# The bank provides additional storage for items beyond inventory.
+Syntax# bank { slots: 800 }Properties# Property Type Default Description slots number 800 Maximum unique item types Usage# Click the Bank button in the game header Bank modal shows: Stored items (click to select, then withdraw) Inventory items available to deposit Deposit# Click an inventory item in the bank modal Choose “Deposit 1” or “Deposit All” Withdraw# Click a bank item to select it Click “Take 1” or “Take All” Items go to inventory (requires free slots) Example# inventory { slots: 28 } bank { slots: 400 } # Items that can be stored item gold_ore { name: &#34;Gold Ore&#34; icon: &#34;🪨&#34; stackable: 1 } item gold_bar { name: &#34;Gold Bar&#34; icon: &#34;🟡&#34; stackable: 1 }Notes# Bank items stack regardless of item’s stackable property Each unique item type uses one bank “slot” Bank is shared across all items (no tabs) Bank button only appears if bank is defined Differences from Inventory# Feature Inventory Bank Access Always available Modal popup Stacking Per-item setting Always stacks Slots Limited Large capacity Equipment Can equip from Cannot equip from Crafting Uses inventory Cannot use bank">
+  <meta property="og:locale" content="en_gb">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+
+
+  <meta itemprop="name" content="Bank">
+  <meta itemprop="description" content="Bank# The bank provides additional storage for items beyond inventory.
+Syntax# bank { slots: 800 }Properties# Property Type Default Description slots number 800 Maximum unique item types Usage# Click the Bank button in the game header Bank modal shows: Stored items (click to select, then withdraw) Inventory items available to deposit Deposit# Click an inventory item in the bank modal Choose “Deposit 1” or “Deposit All” Withdraw# Click a bank item to select it Click “Take 1” or “Take All” Items go to inventory (requires free slots) Example# inventory { slots: 28 } bank { slots: 400 } # Items that can be stored item gold_ore { name: &#34;Gold Ore&#34; icon: &#34;🪨&#34; stackable: 1 } item gold_bar { name: &#34;Gold Bar&#34; icon: &#34;🟡&#34; stackable: 1 }Notes# Bank items stack regardless of item’s stackable property Each unique item type uses one bank “slot” Bank is shared across all items (no tabs) Bank button only appears if bank is defined Differences from Inventory# Feature Inventory Bank Access Always available Modal popup Stacking Per-item setting Always stacks Slots Limited Large capacity Equipment Can equip from Cannot equip from Crafting Uses inventory Cannot use bank">
+  <meta itemprop="wordCount" content="191">
+
+<title>Bank | Tick Forge Documentation</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://docs.tickforge.io/docs/language/bank/">
+<link rel="stylesheet" href="/book.min.cc2c524ed250aac81b23d1f4af87344917b325208841feca0968fe450f570575.css" integrity="sha256-zCxSTtJQqsgbI9H0r4c0SRezJSCIQf7KCWj&#43;RQ9XBXU=" crossorigin="anonymous">
+
+
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.7644b4386e5e494963772a688fad4ef91a7711e49a774b7522c17f9ae8e87354.js" integrity="sha256-dkS0OG5eSUljdypoj61O&#43;Rp3EeSad0t1IsF/mujoc1Q=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-docs">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Tick Forge Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/getting-started/" class="">
+      Getting Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4be79ceb7c93731ea9ceaaf930a270db" class="toggle" checked />
+    <label for="section-4be79ceb7c93731ea9ceaaf930a270db" class="flex">
+      <a href="/docs/language/" class="">
+        Language Reference</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/achievements/" class="">
+      Achievements</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/actions/" class="">
+      Actions</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/bank/" class="active">
+      Bank</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/cheats/" class="">
+      Cheats</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/combat/" class="">
+      Combat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/endgame/" class="">
+      Endgame &amp; Credits</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/equipment/" class="">
+      Equipment</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/game/" class="">
+      Game Declaration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/generators/" class="">
+      Generators</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/items/" class="">
+      Items &amp; Inventory</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/locations/" class="">
+      Locations &amp; Nodes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/player/" class="">
+      Player</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/recipes/" class="">
+      Recipes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/resources/" class="">
+      Resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/skills/" class="">
+      Skills</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/themes/" class="">
+      Themes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/upgrades/" class="">
+      Upgrades</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/editor/" class="">
+      Editor Guide</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/platform/" class="">
+      Platform Features</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Bank</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#syntax">Syntax</a></li>
+    <li><a href="#properties">Properties</a></li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#deposit">Deposit</a></li>
+    <li><a href="#withdraw">Withdraw</a></li>
+    <li><a href="#example">Example</a></li>
+    <li><a href="#notes">Notes</a></li>
+    <li><a href="#differences-from-inventory">Differences from Inventory</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="bank">Bank<a class="anchor" href="#bank">#</a></h1>
+<p>The bank provides additional storage for items beyond inventory.</p>
+<h2 id="syntax">Syntax<a class="anchor" href="#syntax">#</a></h2>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">bank {
+  slots: 800
+}</code></pre><h2 id="properties">Properties<a class="anchor" href="#properties">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Default</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>slots</code></td>
+          <td>number</td>
+          <td><code>800</code></td>
+          <td>Maximum unique item types</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="usage">Usage<a class="anchor" href="#usage">#</a></h2>
+<ol>
+<li>Click the <strong>Bank</strong> button in the game header</li>
+<li>Bank modal shows:
+<ul>
+<li>Stored items (click to select, then withdraw)</li>
+<li>Inventory items available to deposit</li>
+</ul>
+</li>
+</ol>
+<h2 id="deposit">Deposit<a class="anchor" href="#deposit">#</a></h2>
+<ul>
+<li>Click an inventory item in the bank modal</li>
+<li>Choose &ldquo;Deposit 1&rdquo; or &ldquo;Deposit All&rdquo;</li>
+</ul>
+<h2 id="withdraw">Withdraw<a class="anchor" href="#withdraw">#</a></h2>
+<ul>
+<li>Click a bank item to select it</li>
+<li>Click &ldquo;Take 1&rdquo; or &ldquo;Take All&rdquo;</li>
+<li>Items go to inventory (requires free slots)</li>
+</ul>
+<h2 id="example">Example<a class="anchor" href="#example">#</a></h2>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">inventory {
+  slots: 28
+}
+
+bank {
+  slots: 400
+}
+
+# Items that can be stored
+item gold_ore {
+  name: &#34;Gold Ore&#34;
+  icon: &#34;🪨&#34;
+  stackable: 1
+}
+
+item gold_bar {
+  name: &#34;Gold Bar&#34;
+  icon: &#34;🟡&#34;
+  stackable: 1
+}</code></pre><h2 id="notes">Notes<a class="anchor" href="#notes">#</a></h2>
+<ul>
+<li>Bank items stack regardless of item&rsquo;s <code>stackable</code> property</li>
+<li>Each unique item type uses one bank &ldquo;slot&rdquo;</li>
+<li>Bank is shared across all items (no tabs)</li>
+<li>Bank button only appears if <code>bank</code> is defined</li>
+</ul>
+<h2 id="differences-from-inventory">Differences from Inventory<a class="anchor" href="#differences-from-inventory">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>Feature</th>
+          <th>Inventory</th>
+          <th>Bank</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Access</td>
+          <td>Always available</td>
+          <td>Modal popup</td>
+      </tr>
+      <tr>
+          <td>Stacking</td>
+          <td>Per-item setting</td>
+          <td>Always stacks</td>
+      </tr>
+      <tr>
+          <td>Slots</td>
+          <td>Limited</td>
+          <td>Large capacity</td>
+      </tr>
+      <tr>
+          <td>Equipment</td>
+          <td>Can equip from</td>
+          <td>Cannot equip from</td>
+      </tr>
+      <tr>
+          <td>Crafting</td>
+          <td>Uses inventory</td>
+          <td>Cannot use bank</td>
+      </tr>
+  </tbody>
+</table>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+
+
+
+
+  
+  
+  
+  <div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/docs/language/actions/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Actions</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/docs/language/cheats/" class="flex align-center">
+        <span>Cheats</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+  
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#syntax">Syntax</a></li>
+    <li><a href="#properties">Properties</a></li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#deposit">Deposit</a></li>
+    <li><a href="#withdraw">Withdraw</a></li>
+    <li><a href="#example">Example</a></li>
+    <li><a href="#notes">Notes</a></li>
+    <li><a href="#differences-from-inventory">Differences from Inventory</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

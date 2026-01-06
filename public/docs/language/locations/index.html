@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en-gb" dir="ltr">
+<head>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Locations &amp; Nodes# Create a world map with gatherable resource nodes.
+Location Syntax# location identifier { name: &#34;Display Name&#34; description: &#34;Location description&#34; icon: &#34;X&#34; connections: other_location, another_location }Location Properties# Property Type Required Description name string Yes Display name description string No Description text icon string Yes Icon/emoji connections id list No Connected locations Node Syntax# node identifier { name: &#34;Display Name&#34; description: &#34;Node description&#34; icon: &#34;X&#34; location: location_id requires_skill: skill level gives: quantity item gives_xp: amount skill cooldown: milliseconds depletion_chance: 0.0-1.0 }Node Properties# Property Type Required Default Description name string Yes - Display name description string No - Description text icon string Yes - Icon/emoji location id Yes - Where node appears requires_skill skill level No - Skill requirement gives amount item Yes - Item reward gives_xp amount skill No - XP reward cooldown number No 3000 Ms between harvests depletion_chance number No 0 Chance to deplete (0-1) Example World# # Locations location lumbridge { name: &#34;Lumbridge&#34; description: &#34;A peaceful starting town&#34; icon: &#34;🏠&#34; connections: forest, mine } location forest { name: &#34;Forest&#34; description: &#34;Dense woodland&#34; icon: &#34;🌲&#34; connections: lumbridge, swamp } location mine { name: &#34;Mine&#34; description: &#34;Dark mining tunnels&#34; icon: &#34;⛏️&#34; connections: lumbridge } # Nodes in Forest node oak_tree { name: &#34;Oak Tree&#34; description: &#34;A sturdy oak tree&#34; icon: &#34;🌳&#34; location: forest requires_skill: woodcutting 1 gives: 1 oak_log gives_xp: 25 woodcutting cooldown: 3000 } node willow_tree { name: &#34;Willow Tree&#34; description: &#34;A graceful willow&#34; icon: &#34;🌴&#34; location: forest requires_skill: woodcutting 30 gives: 1 willow_log gives_xp: 68 woodcutting cooldown: 4000 } # Nodes in Mine node copper_rock { name: &#34;Copper Rock&#34; description: &#34;Contains copper ore&#34; icon: &#34;🪨&#34; location: mine requires_skill: mining 1 gives: 1 copper_ore gives_xp: 18 mining cooldown: 2500 } node iron_rock { name: &#34;Iron Rock&#34; description: &#34;Contains iron ore&#34; icon: &#34;ite&#34; location: mine requires_skill: mining 15 gives: 1 iron_ore gives_xp: 35 mining cooldown: 4000 }Navigation# Players navigate via the Map tab:
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://docs.tickforge.io/docs/language/locations/">
+  <meta property="og:site_name" content="Tick Forge Documentation">
+  <meta property="og:title" content="Locations & Nodes">
+  <meta property="og:description" content="Locations &amp; Nodes# Create a world map with gatherable resource nodes.
+Location Syntax# location identifier { name: &#34;Display Name&#34; description: &#34;Location description&#34; icon: &#34;X&#34; connections: other_location, another_location }Location Properties# Property Type Required Description name string Yes Display name description string No Description text icon string Yes Icon/emoji connections id list No Connected locations Node Syntax# node identifier { name: &#34;Display Name&#34; description: &#34;Node description&#34; icon: &#34;X&#34; location: location_id requires_skill: skill level gives: quantity item gives_xp: amount skill cooldown: milliseconds depletion_chance: 0.0-1.0 }Node Properties# Property Type Required Default Description name string Yes - Display name description string No - Description text icon string Yes - Icon/emoji location id Yes - Where node appears requires_skill skill level No - Skill requirement gives amount item Yes - Item reward gives_xp amount skill No - XP reward cooldown number No 3000 Ms between harvests depletion_chance number No 0 Chance to deplete (0-1) Example World# # Locations location lumbridge { name: &#34;Lumbridge&#34; description: &#34;A peaceful starting town&#34; icon: &#34;🏠&#34; connections: forest, mine } location forest { name: &#34;Forest&#34; description: &#34;Dense woodland&#34; icon: &#34;🌲&#34; connections: lumbridge, swamp } location mine { name: &#34;Mine&#34; description: &#34;Dark mining tunnels&#34; icon: &#34;⛏️&#34; connections: lumbridge } # Nodes in Forest node oak_tree { name: &#34;Oak Tree&#34; description: &#34;A sturdy oak tree&#34; icon: &#34;🌳&#34; location: forest requires_skill: woodcutting 1 gives: 1 oak_log gives_xp: 25 woodcutting cooldown: 3000 } node willow_tree { name: &#34;Willow Tree&#34; description: &#34;A graceful willow&#34; icon: &#34;🌴&#34; location: forest requires_skill: woodcutting 30 gives: 1 willow_log gives_xp: 68 woodcutting cooldown: 4000 } # Nodes in Mine node copper_rock { name: &#34;Copper Rock&#34; description: &#34;Contains copper ore&#34; icon: &#34;🪨&#34; location: mine requires_skill: mining 1 gives: 1 copper_ore gives_xp: 18 mining cooldown: 2500 } node iron_rock { name: &#34;Iron Rock&#34; description: &#34;Contains iron ore&#34; icon: &#34;ite&#34; location: mine requires_skill: mining 15 gives: 1 iron_ore gives_xp: 35 mining cooldown: 4000 }Navigation# Players navigate via the Map tab:">
+  <meta property="og:locale" content="en_gb">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+
+
+  <meta itemprop="name" content="Locations & Nodes">
+  <meta itemprop="description" content="Locations &amp; Nodes# Create a world map with gatherable resource nodes.
+Location Syntax# location identifier { name: &#34;Display Name&#34; description: &#34;Location description&#34; icon: &#34;X&#34; connections: other_location, another_location }Location Properties# Property Type Required Description name string Yes Display name description string No Description text icon string Yes Icon/emoji connections id list No Connected locations Node Syntax# node identifier { name: &#34;Display Name&#34; description: &#34;Node description&#34; icon: &#34;X&#34; location: location_id requires_skill: skill level gives: quantity item gives_xp: amount skill cooldown: milliseconds depletion_chance: 0.0-1.0 }Node Properties# Property Type Required Default Description name string Yes - Display name description string No - Description text icon string Yes - Icon/emoji location id Yes - Where node appears requires_skill skill level No - Skill requirement gives amount item Yes - Item reward gives_xp amount skill No - XP reward cooldown number No 3000 Ms between harvests depletion_chance number No 0 Chance to deplete (0-1) Example World# # Locations location lumbridge { name: &#34;Lumbridge&#34; description: &#34;A peaceful starting town&#34; icon: &#34;🏠&#34; connections: forest, mine } location forest { name: &#34;Forest&#34; description: &#34;Dense woodland&#34; icon: &#34;🌲&#34; connections: lumbridge, swamp } location mine { name: &#34;Mine&#34; description: &#34;Dark mining tunnels&#34; icon: &#34;⛏️&#34; connections: lumbridge } # Nodes in Forest node oak_tree { name: &#34;Oak Tree&#34; description: &#34;A sturdy oak tree&#34; icon: &#34;🌳&#34; location: forest requires_skill: woodcutting 1 gives: 1 oak_log gives_xp: 25 woodcutting cooldown: 3000 } node willow_tree { name: &#34;Willow Tree&#34; description: &#34;A graceful willow&#34; icon: &#34;🌴&#34; location: forest requires_skill: woodcutting 30 gives: 1 willow_log gives_xp: 68 woodcutting cooldown: 4000 } # Nodes in Mine node copper_rock { name: &#34;Copper Rock&#34; description: &#34;Contains copper ore&#34; icon: &#34;🪨&#34; location: mine requires_skill: mining 1 gives: 1 copper_ore gives_xp: 18 mining cooldown: 2500 } node iron_rock { name: &#34;Iron Rock&#34; description: &#34;Contains iron ore&#34; icon: &#34;ite&#34; location: mine requires_skill: mining 15 gives: 1 iron_ore gives_xp: 35 mining cooldown: 4000 }Navigation# Players navigate via the Map tab:">
+  <meta itemprop="wordCount" content="356">
+
+<title>Locations &amp; Nodes | Tick Forge Documentation</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://docs.tickforge.io/docs/language/locations/">
+<link rel="stylesheet" href="/book.min.cc2c524ed250aac81b23d1f4af87344917b325208841feca0968fe450f570575.css" integrity="sha256-zCxSTtJQqsgbI9H0r4c0SRezJSCIQf7KCWj&#43;RQ9XBXU=" crossorigin="anonymous">
+
+
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.7644b4386e5e494963772a688fad4ef91a7711e49a774b7522c17f9ae8e87354.js" integrity="sha256-dkS0OG5eSUljdypoj61O&#43;Rp3EeSad0t1IsF/mujoc1Q=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-docs">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Tick Forge Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/getting-started/" class="">
+      Getting Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4be79ceb7c93731ea9ceaaf930a270db" class="toggle" checked />
+    <label for="section-4be79ceb7c93731ea9ceaaf930a270db" class="flex">
+      <a href="/docs/language/" class="">
+        Language Reference</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/achievements/" class="">
+      Achievements</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/actions/" class="">
+      Actions</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/bank/" class="">
+      Bank</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/cheats/" class="">
+      Cheats</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/combat/" class="">
+      Combat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/endgame/" class="">
+      Endgame &amp; Credits</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/equipment/" class="">
+      Equipment</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/game/" class="">
+      Game Declaration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/generators/" class="">
+      Generators</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/items/" class="">
+      Items &amp; Inventory</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/locations/" class="active">
+      Locations &amp; Nodes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/player/" class="">
+      Player</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/recipes/" class="">
+      Recipes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/resources/" class="">
+      Resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/skills/" class="">
+      Skills</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/themes/" class="">
+      Themes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/upgrades/" class="">
+      Upgrades</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/editor/" class="">
+      Editor Guide</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/platform/" class="">
+      Platform Features</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Locations &amp; Nodes</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#location-syntax">Location Syntax</a></li>
+    <li><a href="#location-properties">Location Properties</a></li>
+    <li><a href="#node-syntax">Node Syntax</a></li>
+    <li><a href="#node-properties">Node Properties</a></li>
+    <li><a href="#example-world">Example World</a></li>
+    <li><a href="#navigation">Navigation</a></li>
+    <li><a href="#display">Display</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="locations--nodes">Locations &amp; Nodes<a class="anchor" href="#locations--nodes">#</a></h1>
+<p>Create a world map with gatherable resource nodes.</p>
+<h2 id="location-syntax">Location Syntax<a class="anchor" href="#location-syntax">#</a></h2>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">location identifier {
+  name: &#34;Display Name&#34;
+  description: &#34;Location description&#34;
+  icon: &#34;X&#34;
+  connections: other_location, another_location
+}</code></pre><h2 id="location-properties">Location Properties<a class="anchor" href="#location-properties">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Required</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>name</code></td>
+          <td>string</td>
+          <td>Yes</td>
+          <td>Display name</td>
+      </tr>
+      <tr>
+          <td><code>description</code></td>
+          <td>string</td>
+          <td>No</td>
+          <td>Description text</td>
+      </tr>
+      <tr>
+          <td><code>icon</code></td>
+          <td>string</td>
+          <td>Yes</td>
+          <td>Icon/emoji</td>
+      </tr>
+      <tr>
+          <td><code>connections</code></td>
+          <td>id list</td>
+          <td>No</td>
+          <td>Connected locations</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="node-syntax">Node Syntax<a class="anchor" href="#node-syntax">#</a></h2>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">node identifier {
+  name: &#34;Display Name&#34;
+  description: &#34;Node description&#34;
+  icon: &#34;X&#34;
+  location: location_id
+  requires_skill: skill level
+  gives: quantity item
+  gives_xp: amount skill
+  cooldown: milliseconds
+  depletion_chance: 0.0-1.0
+}</code></pre><h2 id="node-properties">Node Properties<a class="anchor" href="#node-properties">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Required</th>
+          <th>Default</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>name</code></td>
+          <td>string</td>
+          <td>Yes</td>
+          <td>-</td>
+          <td>Display name</td>
+      </tr>
+      <tr>
+          <td><code>description</code></td>
+          <td>string</td>
+          <td>No</td>
+          <td>-</td>
+          <td>Description text</td>
+      </tr>
+      <tr>
+          <td><code>icon</code></td>
+          <td>string</td>
+          <td>Yes</td>
+          <td>-</td>
+          <td>Icon/emoji</td>
+      </tr>
+      <tr>
+          <td><code>location</code></td>
+          <td>id</td>
+          <td>Yes</td>
+          <td>-</td>
+          <td>Where node appears</td>
+      </tr>
+      <tr>
+          <td><code>requires_skill</code></td>
+          <td>skill level</td>
+          <td>No</td>
+          <td>-</td>
+          <td>Skill requirement</td>
+      </tr>
+      <tr>
+          <td><code>gives</code></td>
+          <td>amount item</td>
+          <td>Yes</td>
+          <td>-</td>
+          <td>Item reward</td>
+      </tr>
+      <tr>
+          <td><code>gives_xp</code></td>
+          <td>amount skill</td>
+          <td>No</td>
+          <td>-</td>
+          <td>XP reward</td>
+      </tr>
+      <tr>
+          <td><code>cooldown</code></td>
+          <td>number</td>
+          <td>No</td>
+          <td><code>3000</code></td>
+          <td>Ms between harvests</td>
+      </tr>
+      <tr>
+          <td><code>depletion_chance</code></td>
+          <td>number</td>
+          <td>No</td>
+          <td><code>0</code></td>
+          <td>Chance to deplete (0-1)</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="example-world">Example World<a class="anchor" href="#example-world">#</a></h2>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs"># Locations
+location lumbridge {
+  name: &#34;Lumbridge&#34;
+  description: &#34;A peaceful starting town&#34;
+  icon: &#34;🏠&#34;
+  connections: forest, mine
+}
+
+location forest {
+  name: &#34;Forest&#34;
+  description: &#34;Dense woodland&#34;
+  icon: &#34;🌲&#34;
+  connections: lumbridge, swamp
+}
+
+location mine {
+  name: &#34;Mine&#34;
+  description: &#34;Dark mining tunnels&#34;
+  icon: &#34;⛏️&#34;
+  connections: lumbridge
+}
+
+# Nodes in Forest
+node oak_tree {
+  name: &#34;Oak Tree&#34;
+  description: &#34;A sturdy oak tree&#34;
+  icon: &#34;🌳&#34;
+  location: forest
+  requires_skill: woodcutting 1
+  gives: 1 oak_log
+  gives_xp: 25 woodcutting
+  cooldown: 3000
+}
+
+node willow_tree {
+  name: &#34;Willow Tree&#34;
+  description: &#34;A graceful willow&#34;
+  icon: &#34;🌴&#34;
+  location: forest
+  requires_skill: woodcutting 30
+  gives: 1 willow_log
+  gives_xp: 68 woodcutting
+  cooldown: 4000
+}
+
+# Nodes in Mine
+node copper_rock {
+  name: &#34;Copper Rock&#34;
+  description: &#34;Contains copper ore&#34;
+  icon: &#34;🪨&#34;
+  location: mine
+  requires_skill: mining 1
+  gives: 1 copper_ore
+  gives_xp: 18 mining
+  cooldown: 2500
+}
+
+node iron_rock {
+  name: &#34;Iron Rock&#34;
+  description: &#34;Contains iron ore&#34;
+  icon: &#34;ite&#34;
+  location: mine
+  requires_skill: mining 15
+  gives: 1 iron_ore
+  gives_xp: 35 mining
+  cooldown: 4000
+}</code></pre><h2 id="navigation">Navigation<a class="anchor" href="#navigation">#</a></h2>
+<p>Players navigate via the Map tab:</p>
+<ul>
+<li>Current location shown with nodes/enemies</li>
+<li>Connected locations shown as clickable buttons</li>
+<li>Travel is instant</li>
+</ul>
+<h2 id="display">Display<a class="anchor" href="#display">#</a></h2>
+<ul>
+<li>Map tab shows current location info</li>
+<li>Available nodes shown with gather buttons</li>
+<li>Cooldown displayed on recently used nodes</li>
+<li>Locked nodes shown if skill requirement not met</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+
+
+
+
+  
+  
+  
+  <div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/docs/language/items/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Items &amp; Inventory</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/docs/language/player/" class="flex align-center">
+        <span>Player</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+  
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#location-syntax">Location Syntax</a></li>
+    <li><a href="#location-properties">Location Properties</a></li>
+    <li><a href="#node-syntax">Node Syntax</a></li>
+    <li><a href="#node-properties">Node Properties</a></li>
+    <li><a href="#example-world">Example World</a></li>
+    <li><a href="#navigation">Navigation</a></li>
+    <li><a href="#display">Display</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

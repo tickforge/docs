@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en-gb" dir="ltr">
+<head>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Combat# Add enemies and a combat system to your game.
+Enemy Syntax# enemy identifier { name: &#34;Display Name&#34; description: &#34;Description&#34; icon: &#34;X&#34; location: location_id health: number max_hit: number attack_speed: ticks attack_level: number strength_level: number defence_level: number requires_skill: skill level drops: quantity item chance gives_xp: amount skill respawn_time: milliseconds }Enemy Properties# Property Type Required Default Description name string Yes - Display name description string No - Description icon string Yes - Icon/emoji location id Yes - Where enemy spawns health number Yes - Hit points max_hit number Yes - Maximum damage per attack attack_speed number No 4 Ticks between attacks attack_level number No 1 Attack accuracy strength_level number No 1 Damage bonus defence_level number No 1 Defense rating requires_skill skill level No - Combat skill requirement drops qty item chance No - Loot (can have multiple) gives_xp amt skill No - XP reward on kill respawn_time number No 5000 Ms to respawn Drop Syntax# drops: quantity item chance quantity - Number of items dropped item - Item identifier chance - Drop rate from 0.0 to 1.0 (0.5 = 50%) Example Enemies# enemy chicken { name: &#34;Chicken&#34; description: &#34;A harmless chicken&#34; icon: &#34;🐔&#34; location: lumbridge health: 3 max_hit: 1 attack_speed: 4 attack_level: 1 strength_level: 1 defence_level: 1 drops: 1 raw_chicken 1.0 drops: 1 feather 1.0 gives_xp: 12 attack gives_xp: 4 hitpoints respawn_time: 3000 } enemy goblin { name: &#34;Goblin&#34; description: &#34;A sneaky goblin&#34; icon: &#34;👺&#34; location: forest health: 25 max_hit: 3 attack_speed: 4 attack_level: 5 strength_level: 5 defence_level: 5 requires_skill: attack 5 drops: 1 bones 1.0 drops: 10 gold_coins 0.5 drops: 1 goblin_mail 0.1 gives_xp: 25 attack gives_xp: 8 hitpoints respawn_time: 5000 } enemy dragon { name: &#34;Green Dragon&#34; description: &#34;A fearsome dragon&#34; icon: &#34;🐉&#34; location: wilderness health: 150 max_hit: 25 attack_speed: 5 attack_level: 68 strength_level: 68 defence_level: 68 requires_skill: attack 60 drops: 1 dragon_bones 1.0 drops: 1 green_dragonhide 1.0 drops: 1 dragon_spear 0.01 gives_xp: 250 attack gives_xp: 83 hitpoints respawn_time: 30000 }Combat Mechanics# Starting Combat: Click “Attack” on an enemy Turn-Based: Both player and enemy attack based on attack_speed Damage: Calculated from strength and equipment bonuses Death: If player dies, combat ends (no penalty) Victory: Enemy drops loot, grants XP, and respawns after timer Combat Skills# Define combat-related skills:
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://docs.tickforge.io/docs/language/combat/">
+  <meta property="og:site_name" content="Tick Forge Documentation">
+  <meta property="og:title" content="Combat">
+  <meta property="og:description" content="Combat# Add enemies and a combat system to your game.
+Enemy Syntax# enemy identifier { name: &#34;Display Name&#34; description: &#34;Description&#34; icon: &#34;X&#34; location: location_id health: number max_hit: number attack_speed: ticks attack_level: number strength_level: number defence_level: number requires_skill: skill level drops: quantity item chance gives_xp: amount skill respawn_time: milliseconds }Enemy Properties# Property Type Required Default Description name string Yes - Display name description string No - Description icon string Yes - Icon/emoji location id Yes - Where enemy spawns health number Yes - Hit points max_hit number Yes - Maximum damage per attack attack_speed number No 4 Ticks between attacks attack_level number No 1 Attack accuracy strength_level number No 1 Damage bonus defence_level number No 1 Defense rating requires_skill skill level No - Combat skill requirement drops qty item chance No - Loot (can have multiple) gives_xp amt skill No - XP reward on kill respawn_time number No 5000 Ms to respawn Drop Syntax# drops: quantity item chance quantity - Number of items dropped item - Item identifier chance - Drop rate from 0.0 to 1.0 (0.5 = 50%) Example Enemies# enemy chicken { name: &#34;Chicken&#34; description: &#34;A harmless chicken&#34; icon: &#34;🐔&#34; location: lumbridge health: 3 max_hit: 1 attack_speed: 4 attack_level: 1 strength_level: 1 defence_level: 1 drops: 1 raw_chicken 1.0 drops: 1 feather 1.0 gives_xp: 12 attack gives_xp: 4 hitpoints respawn_time: 3000 } enemy goblin { name: &#34;Goblin&#34; description: &#34;A sneaky goblin&#34; icon: &#34;👺&#34; location: forest health: 25 max_hit: 3 attack_speed: 4 attack_level: 5 strength_level: 5 defence_level: 5 requires_skill: attack 5 drops: 1 bones 1.0 drops: 10 gold_coins 0.5 drops: 1 goblin_mail 0.1 gives_xp: 25 attack gives_xp: 8 hitpoints respawn_time: 5000 } enemy dragon { name: &#34;Green Dragon&#34; description: &#34;A fearsome dragon&#34; icon: &#34;🐉&#34; location: wilderness health: 150 max_hit: 25 attack_speed: 5 attack_level: 68 strength_level: 68 defence_level: 68 requires_skill: attack 60 drops: 1 dragon_bones 1.0 drops: 1 green_dragonhide 1.0 drops: 1 dragon_spear 0.01 gives_xp: 250 attack gives_xp: 83 hitpoints respawn_time: 30000 }Combat Mechanics# Starting Combat: Click “Attack” on an enemy Turn-Based: Both player and enemy attack based on attack_speed Damage: Calculated from strength and equipment bonuses Death: If player dies, combat ends (no penalty) Victory: Enemy drops loot, grants XP, and respawns after timer Combat Skills# Define combat-related skills:">
+  <meta property="og:locale" content="en_gb">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+
+
+  <meta itemprop="name" content="Combat">
+  <meta itemprop="description" content="Combat# Add enemies and a combat system to your game.
+Enemy Syntax# enemy identifier { name: &#34;Display Name&#34; description: &#34;Description&#34; icon: &#34;X&#34; location: location_id health: number max_hit: number attack_speed: ticks attack_level: number strength_level: number defence_level: number requires_skill: skill level drops: quantity item chance gives_xp: amount skill respawn_time: milliseconds }Enemy Properties# Property Type Required Default Description name string Yes - Display name description string No - Description icon string Yes - Icon/emoji location id Yes - Where enemy spawns health number Yes - Hit points max_hit number Yes - Maximum damage per attack attack_speed number No 4 Ticks between attacks attack_level number No 1 Attack accuracy strength_level number No 1 Damage bonus defence_level number No 1 Defense rating requires_skill skill level No - Combat skill requirement drops qty item chance No - Loot (can have multiple) gives_xp amt skill No - XP reward on kill respawn_time number No 5000 Ms to respawn Drop Syntax# drops: quantity item chance quantity - Number of items dropped item - Item identifier chance - Drop rate from 0.0 to 1.0 (0.5 = 50%) Example Enemies# enemy chicken { name: &#34;Chicken&#34; description: &#34;A harmless chicken&#34; icon: &#34;🐔&#34; location: lumbridge health: 3 max_hit: 1 attack_speed: 4 attack_level: 1 strength_level: 1 defence_level: 1 drops: 1 raw_chicken 1.0 drops: 1 feather 1.0 gives_xp: 12 attack gives_xp: 4 hitpoints respawn_time: 3000 } enemy goblin { name: &#34;Goblin&#34; description: &#34;A sneaky goblin&#34; icon: &#34;👺&#34; location: forest health: 25 max_hit: 3 attack_speed: 4 attack_level: 5 strength_level: 5 defence_level: 5 requires_skill: attack 5 drops: 1 bones 1.0 drops: 10 gold_coins 0.5 drops: 1 goblin_mail 0.1 gives_xp: 25 attack gives_xp: 8 hitpoints respawn_time: 5000 } enemy dragon { name: &#34;Green Dragon&#34; description: &#34;A fearsome dragon&#34; icon: &#34;🐉&#34; location: wilderness health: 150 max_hit: 25 attack_speed: 5 attack_level: 68 strength_level: 68 defence_level: 68 requires_skill: attack 60 drops: 1 dragon_bones 1.0 drops: 1 green_dragonhide 1.0 drops: 1 dragon_spear 0.01 gives_xp: 250 attack gives_xp: 83 hitpoints respawn_time: 30000 }Combat Mechanics# Starting Combat: Click “Attack” on an enemy Turn-Based: Both player and enemy attack based on attack_speed Damage: Calculated from strength and equipment bonuses Death: If player dies, combat ends (no penalty) Victory: Enemy drops loot, grants XP, and respawns after timer Combat Skills# Define combat-related skills:">
+  <meta itemprop="wordCount" content="427">
+
+<title>Combat | Tick Forge Documentation</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://docs.tickforge.io/docs/language/combat/">
+<link rel="stylesheet" href="/book.min.cc2c524ed250aac81b23d1f4af87344917b325208841feca0968fe450f570575.css" integrity="sha256-zCxSTtJQqsgbI9H0r4c0SRezJSCIQf7KCWj&#43;RQ9XBXU=" crossorigin="anonymous">
+
+
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.7644b4386e5e494963772a688fad4ef91a7711e49a774b7522c17f9ae8e87354.js" integrity="sha256-dkS0OG5eSUljdypoj61O&#43;Rp3EeSad0t1IsF/mujoc1Q=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-docs">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Tick Forge Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/getting-started/" class="">
+      Getting Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4be79ceb7c93731ea9ceaaf930a270db" class="toggle" checked />
+    <label for="section-4be79ceb7c93731ea9ceaaf930a270db" class="flex">
+      <a href="/docs/language/" class="">
+        Language Reference</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/achievements/" class="">
+      Achievements</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/actions/" class="">
+      Actions</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/bank/" class="">
+      Bank</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/cheats/" class="">
+      Cheats</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/combat/" class="active">
+      Combat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/endgame/" class="">
+      Endgame &amp; Credits</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/equipment/" class="">
+      Equipment</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/game/" class="">
+      Game Declaration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/generators/" class="">
+      Generators</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/items/" class="">
+      Items &amp; Inventory</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/locations/" class="">
+      Locations &amp; Nodes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/player/" class="">
+      Player</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/recipes/" class="">
+      Recipes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/resources/" class="">
+      Resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/skills/" class="">
+      Skills</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/themes/" class="">
+      Themes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/upgrades/" class="">
+      Upgrades</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/editor/" class="">
+      Editor Guide</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/platform/" class="">
+      Platform Features</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Combat</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#enemy-syntax">Enemy Syntax</a></li>
+    <li><a href="#enemy-properties">Enemy Properties</a></li>
+    <li><a href="#drop-syntax">Drop Syntax</a></li>
+    <li><a href="#example-enemies">Example Enemies</a></li>
+    <li><a href="#combat-mechanics">Combat Mechanics</a></li>
+    <li><a href="#combat-skills">Combat Skills</a></li>
+    <li><a href="#display">Display</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="combat">Combat<a class="anchor" href="#combat">#</a></h1>
+<p>Add enemies and a combat system to your game.</p>
+<h2 id="enemy-syntax">Enemy Syntax<a class="anchor" href="#enemy-syntax">#</a></h2>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">enemy identifier {
+  name: &#34;Display Name&#34;
+  description: &#34;Description&#34;
+  icon: &#34;X&#34;
+  location: location_id
+  health: number
+  max_hit: number
+  attack_speed: ticks
+  attack_level: number
+  strength_level: number
+  defence_level: number
+  requires_skill: skill level
+  drops: quantity item chance
+  gives_xp: amount skill
+  respawn_time: milliseconds
+}</code></pre><h2 id="enemy-properties">Enemy Properties<a class="anchor" href="#enemy-properties">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Required</th>
+          <th>Default</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>name</code></td>
+          <td>string</td>
+          <td>Yes</td>
+          <td>-</td>
+          <td>Display name</td>
+      </tr>
+      <tr>
+          <td><code>description</code></td>
+          <td>string</td>
+          <td>No</td>
+          <td>-</td>
+          <td>Description</td>
+      </tr>
+      <tr>
+          <td><code>icon</code></td>
+          <td>string</td>
+          <td>Yes</td>
+          <td>-</td>
+          <td>Icon/emoji</td>
+      </tr>
+      <tr>
+          <td><code>location</code></td>
+          <td>id</td>
+          <td>Yes</td>
+          <td>-</td>
+          <td>Where enemy spawns</td>
+      </tr>
+      <tr>
+          <td><code>health</code></td>
+          <td>number</td>
+          <td>Yes</td>
+          <td>-</td>
+          <td>Hit points</td>
+      </tr>
+      <tr>
+          <td><code>max_hit</code></td>
+          <td>number</td>
+          <td>Yes</td>
+          <td>-</td>
+          <td>Maximum damage per attack</td>
+      </tr>
+      <tr>
+          <td><code>attack_speed</code></td>
+          <td>number</td>
+          <td>No</td>
+          <td><code>4</code></td>
+          <td>Ticks between attacks</td>
+      </tr>
+      <tr>
+          <td><code>attack_level</code></td>
+          <td>number</td>
+          <td>No</td>
+          <td><code>1</code></td>
+          <td>Attack accuracy</td>
+      </tr>
+      <tr>
+          <td><code>strength_level</code></td>
+          <td>number</td>
+          <td>No</td>
+          <td><code>1</code></td>
+          <td>Damage bonus</td>
+      </tr>
+      <tr>
+          <td><code>defence_level</code></td>
+          <td>number</td>
+          <td>No</td>
+          <td><code>1</code></td>
+          <td>Defense rating</td>
+      </tr>
+      <tr>
+          <td><code>requires_skill</code></td>
+          <td>skill level</td>
+          <td>No</td>
+          <td>-</td>
+          <td>Combat skill requirement</td>
+      </tr>
+      <tr>
+          <td><code>drops</code></td>
+          <td>qty item chance</td>
+          <td>No</td>
+          <td>-</td>
+          <td>Loot (can have multiple)</td>
+      </tr>
+      <tr>
+          <td><code>gives_xp</code></td>
+          <td>amt skill</td>
+          <td>No</td>
+          <td>-</td>
+          <td>XP reward on kill</td>
+      </tr>
+      <tr>
+          <td><code>respawn_time</code></td>
+          <td>number</td>
+          <td>No</td>
+          <td><code>5000</code></td>
+          <td>Ms to respawn</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="drop-syntax">Drop Syntax<a class="anchor" href="#drop-syntax">#</a></h2>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">drops: quantity item chance</code></pre><ul>
+<li><code>quantity</code> - Number of items dropped</li>
+<li><code>item</code> - Item identifier</li>
+<li><code>chance</code> - Drop rate from 0.0 to 1.0 (0.5 = 50%)</li>
+</ul>
+<h2 id="example-enemies">Example Enemies<a class="anchor" href="#example-enemies">#</a></h2>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">enemy chicken {
+  name: &#34;Chicken&#34;
+  description: &#34;A harmless chicken&#34;
+  icon: &#34;🐔&#34;
+  location: lumbridge
+  health: 3
+  max_hit: 1
+  attack_speed: 4
+  attack_level: 1
+  strength_level: 1
+  defence_level: 1
+  drops: 1 raw_chicken 1.0
+  drops: 1 feather 1.0
+  gives_xp: 12 attack
+  gives_xp: 4 hitpoints
+  respawn_time: 3000
+}
+
+enemy goblin {
+  name: &#34;Goblin&#34;
+  description: &#34;A sneaky goblin&#34;
+  icon: &#34;👺&#34;
+  location: forest
+  health: 25
+  max_hit: 3
+  attack_speed: 4
+  attack_level: 5
+  strength_level: 5
+  defence_level: 5
+  requires_skill: attack 5
+  drops: 1 bones 1.0
+  drops: 10 gold_coins 0.5
+  drops: 1 goblin_mail 0.1
+  gives_xp: 25 attack
+  gives_xp: 8 hitpoints
+  respawn_time: 5000
+}
+
+enemy dragon {
+  name: &#34;Green Dragon&#34;
+  description: &#34;A fearsome dragon&#34;
+  icon: &#34;🐉&#34;
+  location: wilderness
+  health: 150
+  max_hit: 25
+  attack_speed: 5
+  attack_level: 68
+  strength_level: 68
+  defence_level: 68
+  requires_skill: attack 60
+  drops: 1 dragon_bones 1.0
+  drops: 1 green_dragonhide 1.0
+  drops: 1 dragon_spear 0.01
+  gives_xp: 250 attack
+  gives_xp: 83 hitpoints
+  respawn_time: 30000
+}</code></pre><h2 id="combat-mechanics">Combat Mechanics<a class="anchor" href="#combat-mechanics">#</a></h2>
+<ol>
+<li><strong>Starting Combat</strong>: Click &ldquo;Attack&rdquo; on an enemy</li>
+<li><strong>Turn-Based</strong>: Both player and enemy attack based on attack_speed</li>
+<li><strong>Damage</strong>: Calculated from strength and equipment bonuses</li>
+<li><strong>Death</strong>: If player dies, combat ends (no penalty)</li>
+<li><strong>Victory</strong>: Enemy drops loot, grants XP, and respawns after timer</li>
+</ol>
+<h2 id="combat-skills">Combat Skills<a class="anchor" href="#combat-skills">#</a></h2>
+<p>Define combat-related skills:</p>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">skill attack {
+  name: &#34;Attack&#34;
+  icon: &#34;⚔️&#34;
+  max_level: 99
+}
+
+skill strength {
+  name: &#34;Strength&#34;
+  icon: &#34;💪&#34;
+  max_level: 99
+}
+
+skill defence {
+  name: &#34;Defence&#34;
+  icon: &#34;🛡️&#34;
+  max_level: 99
+}
+
+skill hitpoints {
+  name: &#34;Hitpoints&#34;
+  icon: &#34;❤️&#34;
+  max_level: 99
+}</code></pre><h2 id="display">Display<a class="anchor" href="#display">#</a></h2>
+<p>Combat tab shows:</p>
+<ul>
+<li>Available enemies at current location</li>
+<li>Current combat status (health bars)</li>
+<li>Attack/flee buttons</li>
+<li>XP gained per kill</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+
+
+
+
+  
+  
+  
+  <div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/docs/language/cheats/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Cheats</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/docs/language/endgame/" class="flex align-center">
+        <span>Endgame &amp; Credits</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+  
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#enemy-syntax">Enemy Syntax</a></li>
+    <li><a href="#enemy-properties">Enemy Properties</a></li>
+    <li><a href="#drop-syntax">Drop Syntax</a></li>
+    <li><a href="#example-enemies">Example Enemies</a></li>
+    <li><a href="#combat-mechanics">Combat Mechanics</a></li>
+    <li><a href="#combat-skills">Combat Skills</a></li>
+    <li><a href="#display">Display</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en-gb" dir="ltr">
+<head>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Generators# Generators automatically produce resources each game tick.
+Syntax# generator identifier { name: &#34;Display Name&#34; description: &#34;Description text&#34; cost: amount resource cost_multiplier: number produces: amount resource requires: requirement }Properties# Property Type Required Default Description name string Yes - Display name description string No - Description shown in UI cost amount Yes - Base purchase cost cost_multiplier number No 1.15 Cost increase per purchase produces amount Yes - Resources produced per tick requires requirement No - Unlock requirement Cost Scaling# Each generator purchased increases the cost:
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://docs.tickforge.io/docs/language/generators/">
+  <meta property="og:site_name" content="Tick Forge Documentation">
+  <meta property="og:title" content="Generators">
+  <meta property="og:description" content="Generators# Generators automatically produce resources each game tick.
+Syntax# generator identifier { name: &#34;Display Name&#34; description: &#34;Description text&#34; cost: amount resource cost_multiplier: number produces: amount resource requires: requirement }Properties# Property Type Required Default Description name string Yes - Display name description string No - Description shown in UI cost amount Yes - Base purchase cost cost_multiplier number No 1.15 Cost increase per purchase produces amount Yes - Resources produced per tick requires requirement No - Unlock requirement Cost Scaling# Each generator purchased increases the cost:">
+  <meta property="og:locale" content="en_gb">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+
+
+  <meta itemprop="name" content="Generators">
+  <meta itemprop="description" content="Generators# Generators automatically produce resources each game tick.
+Syntax# generator identifier { name: &#34;Display Name&#34; description: &#34;Description text&#34; cost: amount resource cost_multiplier: number produces: amount resource requires: requirement }Properties# Property Type Required Default Description name string Yes - Display name description string No - Description shown in UI cost amount Yes - Base purchase cost cost_multiplier number No 1.15 Cost increase per purchase produces amount Yes - Resources produced per tick requires requirement No - Unlock requirement Cost Scaling# Each generator purchased increases the cost:">
+  <meta itemprop="wordCount" content="269">
+
+<title>Generators | Tick Forge Documentation</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://docs.tickforge.io/docs/language/generators/">
+<link rel="stylesheet" href="/book.min.cc2c524ed250aac81b23d1f4af87344917b325208841feca0968fe450f570575.css" integrity="sha256-zCxSTtJQqsgbI9H0r4c0SRezJSCIQf7KCWj&#43;RQ9XBXU=" crossorigin="anonymous">
+
+
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.7644b4386e5e494963772a688fad4ef91a7711e49a774b7522c17f9ae8e87354.js" integrity="sha256-dkS0OG5eSUljdypoj61O&#43;Rp3EeSad0t1IsF/mujoc1Q=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-docs">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Tick Forge Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/getting-started/" class="">
+      Getting Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4be79ceb7c93731ea9ceaaf930a270db" class="toggle" checked />
+    <label for="section-4be79ceb7c93731ea9ceaaf930a270db" class="flex">
+      <a href="/docs/language/" class="">
+        Language Reference</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/achievements/" class="">
+      Achievements</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/actions/" class="">
+      Actions</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/bank/" class="">
+      Bank</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/cheats/" class="">
+      Cheats</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/combat/" class="">
+      Combat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/endgame/" class="">
+      Endgame &amp; Credits</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/equipment/" class="">
+      Equipment</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/game/" class="">
+      Game Declaration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/generators/" class="active">
+      Generators</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/items/" class="">
+      Items &amp; Inventory</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/locations/" class="">
+      Locations &amp; Nodes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/player/" class="">
+      Player</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/recipes/" class="">
+      Recipes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/resources/" class="">
+      Resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/skills/" class="">
+      Skills</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/themes/" class="">
+      Themes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/upgrades/" class="">
+      Upgrades</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/editor/" class="">
+      Editor Guide</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/platform/" class="">
+      Platform Features</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Generators</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#syntax">Syntax</a></li>
+    <li><a href="#properties">Properties</a></li>
+    <li><a href="#cost-scaling">Cost Scaling</a></li>
+    <li><a href="#requirements">Requirements</a>
+      <ul>
+        <li><a href="#level-requirement">Level Requirement</a></li>
+        <li><a href="#count-requirement">Count Requirement</a></li>
+      </ul>
+    </li>
+    <li><a href="#examples">Examples</a>
+      <ul>
+        <li><a href="#cookie-clicker-style">Cookie Clicker Style</a></li>
+      </ul>
+    </li>
+    <li><a href="#upgrading-generators">Upgrading Generators</a></li>
+    <li><a href="#display">Display</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="generators">Generators<a class="anchor" href="#generators">#</a></h1>
+<p>Generators automatically produce resources each game tick.</p>
+<h2 id="syntax">Syntax<a class="anchor" href="#syntax">#</a></h2>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">generator identifier {
+  name: &#34;Display Name&#34;
+  description: &#34;Description text&#34;
+  cost: amount resource
+  cost_multiplier: number
+  produces: amount resource
+  requires: requirement
+}</code></pre><h2 id="properties">Properties<a class="anchor" href="#properties">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Required</th>
+          <th>Default</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>name</code></td>
+          <td>string</td>
+          <td>Yes</td>
+          <td>-</td>
+          <td>Display name</td>
+      </tr>
+      <tr>
+          <td><code>description</code></td>
+          <td>string</td>
+          <td>No</td>
+          <td>-</td>
+          <td>Description shown in UI</td>
+      </tr>
+      <tr>
+          <td><code>cost</code></td>
+          <td>amount</td>
+          <td>Yes</td>
+          <td>-</td>
+          <td>Base purchase cost</td>
+      </tr>
+      <tr>
+          <td><code>cost_multiplier</code></td>
+          <td>number</td>
+          <td>No</td>
+          <td><code>1.15</code></td>
+          <td>Cost increase per purchase</td>
+      </tr>
+      <tr>
+          <td><code>produces</code></td>
+          <td>amount</td>
+          <td>Yes</td>
+          <td>-</td>
+          <td>Resources produced per tick</td>
+      </tr>
+      <tr>
+          <td><code>requires</code></td>
+          <td>requirement</td>
+          <td>No</td>
+          <td>-</td>
+          <td>Unlock requirement</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="cost-scaling">Cost Scaling<a class="anchor" href="#cost-scaling">#</a></h2>
+<p>Each generator purchased increases the cost:</p>
+<pre tabindex="0"><code>cost = base_cost * (cost_multiplier ^ owned_count)</code></pre><p>With <code>cost: 10 gold</code> and <code>cost_multiplier: 1.15</code>:</p>
+<ul>
+<li>1st: 10 gold</li>
+<li>2nd: 11.5 gold</li>
+<li>3rd: 13.2 gold</li>
+<li>10th: 40.5 gold</li>
+</ul>
+<h2 id="requirements">Requirements<a class="anchor" href="#requirements">#</a></h2>
+<h3 id="level-requirement">Level Requirement<a class="anchor" href="#level-requirement">#</a></h3>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">generator advanced {
+  name: &#34;Advanced Generator&#34;
+  cost: 1000 gold
+  produces: 10 gold
+  requires: level 5
+}</code></pre><h3 id="count-requirement">Count Requirement<a class="anchor" href="#count-requirement">#</a></h3>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">generator super_miner {
+  name: &#34;Super Miner&#34;
+  cost: 10000 gold
+  produces: 100 gold
+  requires: 10 miner  # Need 10 miners first
+}</code></pre><h2 id="examples">Examples<a class="anchor" href="#examples">#</a></h2>
+<h3 id="cookie-clicker-style">Cookie Clicker Style<a class="anchor" href="#cookie-clicker-style">#</a></h3>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">generator cursor {
+  name: &#34;Cursor&#34;
+  description: &#34;Auto-clicks once per 10 seconds&#34;
+  cost: 15 cookies
+  cost_multiplier: 1.15
+  produces: 0.1 cookies
+}
+
+generator grandma {
+  name: &#34;Grandma&#34;
+  description: &#34;Bakes cookies for you&#34;
+  cost: 100 cookies
+  cost_multiplier: 1.15
+  produces: 1 cookies
+  requires: level 2
+}
+
+generator farm {
+  name: &#34;Farm&#34;
+  description: &#34;Grows cookie plants&#34;
+  cost: 1100 cookies
+  cost_multiplier: 1.15
+  produces: 8 cookies
+  requires: level 3
+}</code></pre><h2 id="upgrading-generators">Upgrading Generators<a class="anchor" href="#upgrading-generators">#</a></h2>
+<p>Use upgrades to multiply generator output:</p>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">upgrade efficient_miners {
+  name: &#34;Efficient Miners&#34;
+  description: &#34;Miners produce 2x resources&#34;
+  cost: 500 gold
+  requires: 5 miner
+  effect: multiply miner 2
+}</code></pre><h2 id="display">Display<a class="anchor" href="#display">#</a></h2>
+<p>Generators appear in the middle panel showing:</p>
+<ul>
+<li>Name and description</li>
+<li>Current cost</li>
+<li>Number owned</li>
+<li>Production rate</li>
+<li>Buy button (disabled if requirements not met)</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+
+
+
+
+  
+  
+  
+  <div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/docs/language/game/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Game Declaration</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/docs/language/items/" class="flex align-center">
+        <span>Items &amp; Inventory</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+  
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#syntax">Syntax</a></li>
+    <li><a href="#properties">Properties</a></li>
+    <li><a href="#cost-scaling">Cost Scaling</a></li>
+    <li><a href="#requirements">Requirements</a>
+      <ul>
+        <li><a href="#level-requirement">Level Requirement</a></li>
+        <li><a href="#count-requirement">Count Requirement</a></li>
+      </ul>
+    </li>
+    <li><a href="#examples">Examples</a>
+      <ul>
+        <li><a href="#cookie-clicker-style">Cookie Clicker Style</a></li>
+      </ul>
+    </li>
+    <li><a href="#upgrading-generators">Upgrading Generators</a></li>
+    <li><a href="#display">Display</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en-gb" dir="ltr">
+<head>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Recipes# Recipes allow players to craft items from other items.
+Syntax# recipe identifier { name: &#34;Display Name&#34; description: &#34;Description&#34; requires_skill: skill level consumes: quantity item, quantity item produces: quantity item gives_xp: amount skill ticks: number }Properties# Property Type Required Default Description name string Yes - Display name description string No - Description requires_skill skill level No - Skill requirement consumes item list Yes - Input materials produces item list Yes - Output items gives_xp amt skill No - XP reward ticks number No 1 Ticks to complete Examples# Basic Crafting# recipe bronze_bar { name: &#34;Bronze Bar&#34; description: &#34;Smelt copper and tin into bronze&#34; requires_skill: smithing 1 consumes: 1 copper_ore, 1 tin_ore produces: 1 bronze_bar gives_xp: 6 smithing }Multiple Inputs# recipe steel_bar { name: &#34;Steel Bar&#34; description: &#34;Smelt iron with coal&#34; requires_skill: smithing 30 consumes: 1 iron_ore, 2 coal produces: 1 steel_bar gives_xp: 18 smithing }Multiple Outputs# recipe uncut_gem { name: &#34;Cut Gem&#34; description: &#34;Cut a gem and keep the dust&#34; requires_skill: crafting 20 consumes: 1 uncut_ruby produces: 1 ruby, 1 gem_dust gives_xp: 25 crafting }Cooking# recipe cooked_shrimp { name: &#34;Cooked Shrimp&#34; description: &#34;Cook raw shrimp&#34; requires_skill: cooking 1 consumes: 1 raw_shrimp produces: 1 cooked_shrimp gives_xp: 30 cooking } recipe cooked_lobster { name: &#34;Cooked Lobster&#34; description: &#34;Cook raw lobster&#34; requires_skill: cooking 40 consumes: 1 raw_lobster produces: 1 cooked_lobster gives_xp: 120 cooking }Smithing Equipment# recipe bronze_sword { name: &#34;Bronze Sword&#34; description: &#34;Forge a bronze sword&#34; requires_skill: smithing 4 consumes: 1 bronze_bar produces: 1 bronze_sword gives_xp: 12 smithing } recipe iron_platebody { name: &#34;Iron Platebody&#34; description: &#34;Forge iron armor&#34; requires_skill: smithing 33 consumes: 5 iron_bar produces: 1 iron_platebody gives_xp: 125 smithing }Timed Crafting# Use ticks for recipes that take time:
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://docs.tickforge.io/docs/language/recipes/">
+  <meta property="og:site_name" content="Tick Forge Documentation">
+  <meta property="og:title" content="Recipes">
+  <meta property="og:description" content="Recipes# Recipes allow players to craft items from other items.
+Syntax# recipe identifier { name: &#34;Display Name&#34; description: &#34;Description&#34; requires_skill: skill level consumes: quantity item, quantity item produces: quantity item gives_xp: amount skill ticks: number }Properties# Property Type Required Default Description name string Yes - Display name description string No - Description requires_skill skill level No - Skill requirement consumes item list Yes - Input materials produces item list Yes - Output items gives_xp amt skill No - XP reward ticks number No 1 Ticks to complete Examples# Basic Crafting# recipe bronze_bar { name: &#34;Bronze Bar&#34; description: &#34;Smelt copper and tin into bronze&#34; requires_skill: smithing 1 consumes: 1 copper_ore, 1 tin_ore produces: 1 bronze_bar gives_xp: 6 smithing }Multiple Inputs# recipe steel_bar { name: &#34;Steel Bar&#34; description: &#34;Smelt iron with coal&#34; requires_skill: smithing 30 consumes: 1 iron_ore, 2 coal produces: 1 steel_bar gives_xp: 18 smithing }Multiple Outputs# recipe uncut_gem { name: &#34;Cut Gem&#34; description: &#34;Cut a gem and keep the dust&#34; requires_skill: crafting 20 consumes: 1 uncut_ruby produces: 1 ruby, 1 gem_dust gives_xp: 25 crafting }Cooking# recipe cooked_shrimp { name: &#34;Cooked Shrimp&#34; description: &#34;Cook raw shrimp&#34; requires_skill: cooking 1 consumes: 1 raw_shrimp produces: 1 cooked_shrimp gives_xp: 30 cooking } recipe cooked_lobster { name: &#34;Cooked Lobster&#34; description: &#34;Cook raw lobster&#34; requires_skill: cooking 40 consumes: 1 raw_lobster produces: 1 cooked_lobster gives_xp: 120 cooking }Smithing Equipment# recipe bronze_sword { name: &#34;Bronze Sword&#34; description: &#34;Forge a bronze sword&#34; requires_skill: smithing 4 consumes: 1 bronze_bar produces: 1 bronze_sword gives_xp: 12 smithing } recipe iron_platebody { name: &#34;Iron Platebody&#34; description: &#34;Forge iron armor&#34; requires_skill: smithing 33 consumes: 5 iron_bar produces: 1 iron_platebody gives_xp: 125 smithing }Timed Crafting# Use ticks for recipes that take time:">
+  <meta property="og:locale" content="en_gb">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+
+
+  <meta itemprop="name" content="Recipes">
+  <meta itemprop="description" content="Recipes# Recipes allow players to craft items from other items.
+Syntax# recipe identifier { name: &#34;Display Name&#34; description: &#34;Description&#34; requires_skill: skill level consumes: quantity item, quantity item produces: quantity item gives_xp: amount skill ticks: number }Properties# Property Type Required Default Description name string Yes - Display name description string No - Description requires_skill skill level No - Skill requirement consumes item list Yes - Input materials produces item list Yes - Output items gives_xp amt skill No - XP reward ticks number No 1 Ticks to complete Examples# Basic Crafting# recipe bronze_bar { name: &#34;Bronze Bar&#34; description: &#34;Smelt copper and tin into bronze&#34; requires_skill: smithing 1 consumes: 1 copper_ore, 1 tin_ore produces: 1 bronze_bar gives_xp: 6 smithing }Multiple Inputs# recipe steel_bar { name: &#34;Steel Bar&#34; description: &#34;Smelt iron with coal&#34; requires_skill: smithing 30 consumes: 1 iron_ore, 2 coal produces: 1 steel_bar gives_xp: 18 smithing }Multiple Outputs# recipe uncut_gem { name: &#34;Cut Gem&#34; description: &#34;Cut a gem and keep the dust&#34; requires_skill: crafting 20 consumes: 1 uncut_ruby produces: 1 ruby, 1 gem_dust gives_xp: 25 crafting }Cooking# recipe cooked_shrimp { name: &#34;Cooked Shrimp&#34; description: &#34;Cook raw shrimp&#34; requires_skill: cooking 1 consumes: 1 raw_shrimp produces: 1 cooked_shrimp gives_xp: 30 cooking } recipe cooked_lobster { name: &#34;Cooked Lobster&#34; description: &#34;Cook raw lobster&#34; requires_skill: cooking 40 consumes: 1 raw_lobster produces: 1 cooked_lobster gives_xp: 120 cooking }Smithing Equipment# recipe bronze_sword { name: &#34;Bronze Sword&#34; description: &#34;Forge a bronze sword&#34; requires_skill: smithing 4 consumes: 1 bronze_bar produces: 1 bronze_sword gives_xp: 12 smithing } recipe iron_platebody { name: &#34;Iron Platebody&#34; description: &#34;Forge iron armor&#34; requires_skill: smithing 33 consumes: 5 iron_bar produces: 1 iron_platebody gives_xp: 125 smithing }Timed Crafting# Use ticks for recipes that take time:">
+  <meta itemprop="wordCount" content="335">
+
+<title>Recipes | Tick Forge Documentation</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://docs.tickforge.io/docs/language/recipes/">
+<link rel="stylesheet" href="/book.min.cc2c524ed250aac81b23d1f4af87344917b325208841feca0968fe450f570575.css" integrity="sha256-zCxSTtJQqsgbI9H0r4c0SRezJSCIQf7KCWj&#43;RQ9XBXU=" crossorigin="anonymous">
+
+
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.7644b4386e5e494963772a688fad4ef91a7711e49a774b7522c17f9ae8e87354.js" integrity="sha256-dkS0OG5eSUljdypoj61O&#43;Rp3EeSad0t1IsF/mujoc1Q=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-docs">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Tick Forge Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/getting-started/" class="">
+      Getting Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4be79ceb7c93731ea9ceaaf930a270db" class="toggle" checked />
+    <label for="section-4be79ceb7c93731ea9ceaaf930a270db" class="flex">
+      <a href="/docs/language/" class="">
+        Language Reference</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/achievements/" class="">
+      Achievements</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/actions/" class="">
+      Actions</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/bank/" class="">
+      Bank</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/cheats/" class="">
+      Cheats</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/combat/" class="">
+      Combat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/endgame/" class="">
+      Endgame &amp; Credits</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/equipment/" class="">
+      Equipment</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/game/" class="">
+      Game Declaration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/generators/" class="">
+      Generators</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/items/" class="">
+      Items &amp; Inventory</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/locations/" class="">
+      Locations &amp; Nodes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/player/" class="">
+      Player</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/recipes/" class="active">
+      Recipes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/resources/" class="">
+      Resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/skills/" class="">
+      Skills</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/themes/" class="">
+      Themes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/upgrades/" class="">
+      Upgrades</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/editor/" class="">
+      Editor Guide</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/platform/" class="">
+      Platform Features</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Recipes</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#syntax">Syntax</a></li>
+    <li><a href="#properties">Properties</a></li>
+    <li><a href="#examples">Examples</a>
+      <ul>
+        <li><a href="#basic-crafting">Basic Crafting</a></li>
+        <li><a href="#multiple-inputs">Multiple Inputs</a></li>
+        <li><a href="#multiple-outputs">Multiple Outputs</a></li>
+        <li><a href="#cooking">Cooking</a></li>
+        <li><a href="#smithing-equipment">Smithing Equipment</a></li>
+      </ul>
+    </li>
+    <li><a href="#timed-crafting">Timed Crafting</a></li>
+    <li><a href="#display">Display</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="recipes">Recipes<a class="anchor" href="#recipes">#</a></h1>
+<p>Recipes allow players to craft items from other items.</p>
+<h2 id="syntax">Syntax<a class="anchor" href="#syntax">#</a></h2>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">recipe identifier {
+  name: &#34;Display Name&#34;
+  description: &#34;Description&#34;
+  requires_skill: skill level
+  consumes: quantity item, quantity item
+  produces: quantity item
+  gives_xp: amount skill
+  ticks: number
+}</code></pre><h2 id="properties">Properties<a class="anchor" href="#properties">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Required</th>
+          <th>Default</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>name</code></td>
+          <td>string</td>
+          <td>Yes</td>
+          <td>-</td>
+          <td>Display name</td>
+      </tr>
+      <tr>
+          <td><code>description</code></td>
+          <td>string</td>
+          <td>No</td>
+          <td>-</td>
+          <td>Description</td>
+      </tr>
+      <tr>
+          <td><code>requires_skill</code></td>
+          <td>skill level</td>
+          <td>No</td>
+          <td>-</td>
+          <td>Skill requirement</td>
+      </tr>
+      <tr>
+          <td><code>consumes</code></td>
+          <td>item list</td>
+          <td>Yes</td>
+          <td>-</td>
+          <td>Input materials</td>
+      </tr>
+      <tr>
+          <td><code>produces</code></td>
+          <td>item list</td>
+          <td>Yes</td>
+          <td>-</td>
+          <td>Output items</td>
+      </tr>
+      <tr>
+          <td><code>gives_xp</code></td>
+          <td>amt skill</td>
+          <td>No</td>
+          <td>-</td>
+          <td>XP reward</td>
+      </tr>
+      <tr>
+          <td><code>ticks</code></td>
+          <td>number</td>
+          <td>No</td>
+          <td><code>1</code></td>
+          <td>Ticks to complete</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="examples">Examples<a class="anchor" href="#examples">#</a></h2>
+<h3 id="basic-crafting">Basic Crafting<a class="anchor" href="#basic-crafting">#</a></h3>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">recipe bronze_bar {
+  name: &#34;Bronze Bar&#34;
+  description: &#34;Smelt copper and tin into bronze&#34;
+  requires_skill: smithing 1
+  consumes: 1 copper_ore, 1 tin_ore
+  produces: 1 bronze_bar
+  gives_xp: 6 smithing
+}</code></pre><h3 id="multiple-inputs">Multiple Inputs<a class="anchor" href="#multiple-inputs">#</a></h3>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">recipe steel_bar {
+  name: &#34;Steel Bar&#34;
+  description: &#34;Smelt iron with coal&#34;
+  requires_skill: smithing 30
+  consumes: 1 iron_ore, 2 coal
+  produces: 1 steel_bar
+  gives_xp: 18 smithing
+}</code></pre><h3 id="multiple-outputs">Multiple Outputs<a class="anchor" href="#multiple-outputs">#</a></h3>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">recipe uncut_gem {
+  name: &#34;Cut Gem&#34;
+  description: &#34;Cut a gem and keep the dust&#34;
+  requires_skill: crafting 20
+  consumes: 1 uncut_ruby
+  produces: 1 ruby, 1 gem_dust
+  gives_xp: 25 crafting
+}</code></pre><h3 id="cooking">Cooking<a class="anchor" href="#cooking">#</a></h3>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">recipe cooked_shrimp {
+  name: &#34;Cooked Shrimp&#34;
+  description: &#34;Cook raw shrimp&#34;
+  requires_skill: cooking 1
+  consumes: 1 raw_shrimp
+  produces: 1 cooked_shrimp
+  gives_xp: 30 cooking
+}
+
+recipe cooked_lobster {
+  name: &#34;Cooked Lobster&#34;
+  description: &#34;Cook raw lobster&#34;
+  requires_skill: cooking 40
+  consumes: 1 raw_lobster
+  produces: 1 cooked_lobster
+  gives_xp: 120 cooking
+}</code></pre><h3 id="smithing-equipment">Smithing Equipment<a class="anchor" href="#smithing-equipment">#</a></h3>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">recipe bronze_sword {
+  name: &#34;Bronze Sword&#34;
+  description: &#34;Forge a bronze sword&#34;
+  requires_skill: smithing 4
+  consumes: 1 bronze_bar
+  produces: 1 bronze_sword
+  gives_xp: 12 smithing
+}
+
+recipe iron_platebody {
+  name: &#34;Iron Platebody&#34;
+  description: &#34;Forge iron armor&#34;
+  requires_skill: smithing 33
+  consumes: 5 iron_bar
+  produces: 1 iron_platebody
+  gives_xp: 125 smithing
+}</code></pre><h2 id="timed-crafting">Timed Crafting<a class="anchor" href="#timed-crafting">#</a></h2>
+<p>Use <code>ticks</code> for recipes that take time:</p>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">recipe dragon_armor {
+  name: &#34;Dragon Armor&#34;
+  description: &#34;A legendary piece of armor&#34;
+  requires_skill: smithing 90
+  consumes: 10 dragon_bar, 1 dragon_scale
+  produces: 1 dragon_platebody
+  gives_xp: 500 smithing
+  ticks: 10  # Takes 10 game ticks
+}</code></pre><h2 id="display">Display<a class="anchor" href="#display">#</a></h2>
+<p>Crafting tab shows:</p>
+<ul>
+<li>Available recipes (meeting skill requirements)</li>
+<li>Locked recipes (with requirement shown)</li>
+<li>Material requirements (colored by availability)</li>
+<li>Craft button (disabled if missing materials)</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+
+
+
+
+  
+  
+  
+  <div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/docs/language/player/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Player</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/docs/language/resources/" class="flex align-center">
+        <span>Resources</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+  
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#syntax">Syntax</a></li>
+    <li><a href="#properties">Properties</a></li>
+    <li><a href="#examples">Examples</a>
+      <ul>
+        <li><a href="#basic-crafting">Basic Crafting</a></li>
+        <li><a href="#multiple-inputs">Multiple Inputs</a></li>
+        <li><a href="#multiple-outputs">Multiple Outputs</a></li>
+        <li><a href="#cooking">Cooking</a></li>
+        <li><a href="#smithing-equipment">Smithing Equipment</a></li>
+      </ul>
+    </li>
+    <li><a href="#timed-crafting">Timed Crafting</a></li>
+    <li><a href="#display">Display</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

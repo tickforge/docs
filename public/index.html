@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en-gb" dir="ltr">
+<head>
+	<meta name="generator" content="Hugo 0.154.2">
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="TickForge# A domain-specific language for incremental/idle games.
+What is TickForge?# TickForge is a scripting language that compiles to a browser-based game runtime. Write declarative game logic in .tfs files, drag-and-drop onto the web player, and your game runs instantly. No build step, no dependencies, no framework churn.
+The language handles the boring parts—resource management, cost scaling, save/load, UI rendering—so you can focus on game design.
+game &#34;My Game&#34; { version: &#34;1.0&#34; tick_rate: 1000 } resource gold { name: &#34;Gold&#34; icon: &#34;$&#34; initial: 0 } generator miner { name: &#34;Miner&#34; cost: 10 gold cost_multiplier: 1.15 produces: 1 gold }Why?# Incremental games are the perfect “small but complete” game genre. They’re simple enough to finish, complex enough to be interesting, and endlessly tweakable. But building one from scratch means reinventing the same systems every time: tick loops, exponential costs, prestige layers, save serialization.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://docs.tickforge.io/">
+  <meta property="og:site_name" content="Tick Forge Documentation">
+  <meta property="og:title" content="TickForge Documentation">
+  <meta property="og:description" content="TickForge# A domain-specific language for incremental/idle games.
+What is TickForge?# TickForge is a scripting language that compiles to a browser-based game runtime. Write declarative game logic in .tfs files, drag-and-drop onto the web player, and your game runs instantly. No build step, no dependencies, no framework churn.
+The language handles the boring parts—resource management, cost scaling, save/load, UI rendering—so you can focus on game design.
+game &#34;My Game&#34; { version: &#34;1.0&#34; tick_rate: 1000 } resource gold { name: &#34;Gold&#34; icon: &#34;$&#34; initial: 0 } generator miner { name: &#34;Miner&#34; cost: 10 gold cost_multiplier: 1.15 produces: 1 gold }Why?# Incremental games are the perfect “small but complete” game genre. They’re simple enough to finish, complex enough to be interesting, and endlessly tweakable. But building one from scratch means reinventing the same systems every time: tick loops, exponential costs, prestige layers, save serialization.">
+  <meta property="og:locale" content="en_gb">
+  <meta property="og:type" content="website">
+
+
+  <meta itemprop="name" content="TickForge Documentation">
+  <meta itemprop="description" content="TickForge# A domain-specific language for incremental/idle games.
+What is TickForge?# TickForge is a scripting language that compiles to a browser-based game runtime. Write declarative game logic in .tfs files, drag-and-drop onto the web player, and your game runs instantly. No build step, no dependencies, no framework churn.
+The language handles the boring parts—resource management, cost scaling, save/load, UI rendering—so you can focus on game design.
+game &#34;My Game&#34; { version: &#34;1.0&#34; tick_rate: 1000 } resource gold { name: &#34;Gold&#34; icon: &#34;$&#34; initial: 0 } generator miner { name: &#34;Miner&#34; cost: 10 gold cost_multiplier: 1.15 produces: 1 gold }Why?# Incremental games are the perfect “small but complete” game genre. They’re simple enough to finish, complex enough to be interesting, and endlessly tweakable. But building one from scratch means reinventing the same systems every time: tick loops, exponential costs, prestige layers, save serialization.">
+  <meta itemprop="wordCount" content="330">
+
+<title>TickForge Documentation | Tick Forge Documentation</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://docs.tickforge.io/">
+<link rel="stylesheet" href="/book.min.cc2c524ed250aac81b23d1f4af87344917b325208841feca0968fe450f570575.css" integrity="sha256-zCxSTtJQqsgbI9H0r4c0SRezJSCIQf7KCWj&#43;RQ9XBXU=" crossorigin="anonymous">
+
+
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.7644b4386e5e494963772a688fad4ef91a7711e49a774b7522c17f9ae8e87354.js" integrity="sha256-dkS0OG5eSUljdypoj61O&#43;Rp3EeSad0t1IsF/mujoc1Q=" crossorigin="anonymous"></script>
+
+
+<link rel="alternate" type="application/rss+xml" href="https://docs.tickforge.io/index.xml" title="Tick Forge Documentation" />
+
+  
+</head>
+<body dir="ltr" class="book-kind-home book-type-page">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Tick Forge Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/getting-started/" class="">
+      Getting Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4be79ceb7c93731ea9ceaaf930a270db" class="toggle"  />
+    <label for="section-4be79ceb7c93731ea9ceaaf930a270db" class="flex">
+      <a href="/docs/language/" class="">
+        Language Reference</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/achievements/" class="">
+      Achievements</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/actions/" class="">
+      Actions</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/bank/" class="">
+      Bank</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/cheats/" class="">
+      Cheats</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/combat/" class="">
+      Combat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/endgame/" class="">
+      Endgame &amp; Credits</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/equipment/" class="">
+      Equipment</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/game/" class="">
+      Game Declaration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/generators/" class="">
+      Generators</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/items/" class="">
+      Items &amp; Inventory</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/locations/" class="">
+      Locations &amp; Nodes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/player/" class="">
+      Player</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/recipes/" class="">
+      Recipes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/resources/" class="">
+      Resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/skills/" class="">
+      Skills</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/themes/" class="">
+      Themes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/upgrades/" class="">
+      Upgrades</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/editor/" class="">
+      Editor Guide</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/platform/" class="">
+      Platform Features</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>TickForge Documentation</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-tickforge">What is TickForge?</a></li>
+    <li><a href="#why">Why?</a></li>
+    <li><a href="#goals">Goals</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#documentation">Documentation</a></li>
+    <li><a href="#support">Support</a></li>
+    <li><a href="#status">Status</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="tickforge">TickForge<a class="anchor" href="#tickforge">#</a></h1>
+<p>A domain-specific language for incremental/idle games.</p>
+<h2 id="what-is-tickforge">What is TickForge?<a class="anchor" href="#what-is-tickforge">#</a></h2>
+<p>TickForge is a scripting language that compiles to a browser-based game runtime. Write declarative game logic in <code>.tfs</code> files, drag-and-drop onto the web player, and your game runs instantly. No build step, no dependencies, no framework churn.</p>
+<p>The language handles the boring parts—resource management, cost scaling, save/load, UI rendering—so you can focus on game design.</p>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">game &#34;My Game&#34; {
+  version: &#34;1.0&#34;
+  tick_rate: 1000
+}
+
+resource gold {
+  name: &#34;Gold&#34;
+  icon: &#34;$&#34;
+  initial: 0
+}
+
+generator miner {
+  name: &#34;Miner&#34;
+  cost: 10 gold
+  cost_multiplier: 1.15
+  produces: 1 gold
+}</code></pre><h2 id="why">Why?<a class="anchor" href="#why">#</a></h2>
+<p>Incremental games are the perfect &ldquo;small but complete&rdquo; game genre. They&rsquo;re simple enough to finish, complex enough to be interesting, and endlessly tweakable. But building one from scratch means reinventing the same systems every time: tick loops, exponential costs, prestige layers, save serialization.</p>
+<p>TickForge extracts the common patterns into a language. You describe <em>what</em> your game does, not <em>how</em> to render buttons or calculate compound interest.</p>
+<h2 id="goals">Goals<a class="anchor" href="#goals">#</a></h2>
+<p><strong>Short term:</strong> A complete, documented DSL that covers 80% of incremental game mechanics. Cookie Clicker to Melvor Idle complexity.</p>
+<p><strong>Long term:</strong> A platform where anyone can create, share, and play incremental games without touching JavaScript. Think &ldquo;Scratch for idle games&rdquo; but without the toy aesthetic.</p>
+<h2 id="roadmap">Roadmap<a class="anchor" href="#roadmap">#</a></h2>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> Core engine (resources, generators, upgrades, achievements)</li>
+<li><input checked="" disabled="" type="checkbox"> RPG systems (skills, inventory, combat, crafting)</li>
+<li><input checked="" disabled="" type="checkbox"> Browser-based editor with live preview</li>
+<li><input checked="" disabled="" type="checkbox"> Theming system</li>
+<li><input checked="" disabled="" type="checkbox"> Save/load export</li>
+<li><input disabled="" type="checkbox"> Prestige/ascension mechanics</li>
+<li><input disabled="" type="checkbox"> Conditional logic and events</li>
+<li><input disabled="" type="checkbox"> Asset imports (custom icons, sounds)</li>
+<li><input disabled="" type="checkbox"> Game sharing &amp; discovery</li>
+<li><input disabled="" type="checkbox"> Offline progress calculation</li>
+<li><input disabled="" type="checkbox"> Mobile-responsive UI</li>
+</ul>
+<h2 id="documentation">Documentation<a class="anchor" href="#documentation">#</a></h2>
+<ul>
+<li><a href="/docs/getting-started/">Getting Started</a> — Build your first game in 5 minutes</li>
+<li><a href="/docs/language/">Language Reference</a> — Complete syntax documentation</li>
+<li><a href="/docs/editor/">Editor Guide</a> — Using the built-in editor</li>
+<li><a href="/docs/platform/">Platform Features</a> — Web runtime capabilities</li>
+</ul>
+<h2 id="support">Support<a class="anchor" href="#support">#</a></h2>
+<p>TickForge is free and open source. If you want to support development:</p>
+<ul>
+<li><a href="https://patreon.com/c/tickforge">Patreon</a> — Monthly support</li>
+<li><a href="https://discord.gg/KNPV4XcYKW">Discord</a> — Community &amp; feedback</li>
+<li><a href="https://github.com/tickforge/issues">GitHub</a> — Issues &amp; discussion</li>
+</ul>
+<h2 id="status">Status<a class="anchor" href="#status">#</a></h2>
+<p>Early but usable. The core language is in preview. Breaking changes are possible but will be documented. Expect rough edges.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+
+
+
+
+  
+  
+  
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-tickforge">What is TickForge?</a></li>
+    <li><a href="#why">Why?</a></li>
+    <li><a href="#goals">Goals</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#documentation">Documentation</a></li>
+    <li><a href="#support">Support</a></li>
+    <li><a href="#status">Status</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

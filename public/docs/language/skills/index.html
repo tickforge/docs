@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en-gb" dir="ltr">
+<head>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Skills# Skills provide an RPG-style progression system separate from the main player level.
+Syntax# skill identifier { name: &#34;Display Name&#34; icon: &#34;X&#34; max_level: 99 }Properties# Property Type Required Default Description name string Yes - Skill display name icon string Yes - Icon/emoji for the skill max_level number No 99 Maximum skill level Gaining Skill XP# Skills gain XP through nodes and recipes:
+From Nodes# node oak_tree { name: &#34;Oak Tree&#34; location: forest gives: 1 oak_log gives_xp: 25 woodcutting # Grants woodcutting XP cooldown: 3000 }From Recipes# recipe bronze_bar { name: &#34;Bronze Bar&#34; consumes: 1 copper_ore, 1 tin_ore produces: 1 bronze_bar gives_xp: 15 smithing # Grants smithing XP }Skill Requirements# Use skills as requirements for content:
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://docs.tickforge.io/docs/language/skills/">
+  <meta property="og:site_name" content="Tick Forge Documentation">
+  <meta property="og:title" content="Skills">
+  <meta property="og:description" content="Skills# Skills provide an RPG-style progression system separate from the main player level.
+Syntax# skill identifier { name: &#34;Display Name&#34; icon: &#34;X&#34; max_level: 99 }Properties# Property Type Required Default Description name string Yes - Skill display name icon string Yes - Icon/emoji for the skill max_level number No 99 Maximum skill level Gaining Skill XP# Skills gain XP through nodes and recipes:
+From Nodes# node oak_tree { name: &#34;Oak Tree&#34; location: forest gives: 1 oak_log gives_xp: 25 woodcutting # Grants woodcutting XP cooldown: 3000 }From Recipes# recipe bronze_bar { name: &#34;Bronze Bar&#34; consumes: 1 copper_ore, 1 tin_ore produces: 1 bronze_bar gives_xp: 15 smithing # Grants smithing XP }Skill Requirements# Use skills as requirements for content:">
+  <meta property="og:locale" content="en_gb">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+
+
+  <meta itemprop="name" content="Skills">
+  <meta itemprop="description" content="Skills# Skills provide an RPG-style progression system separate from the main player level.
+Syntax# skill identifier { name: &#34;Display Name&#34; icon: &#34;X&#34; max_level: 99 }Properties# Property Type Required Default Description name string Yes - Skill display name icon string Yes - Icon/emoji for the skill max_level number No 99 Maximum skill level Gaining Skill XP# Skills gain XP through nodes and recipes:
+From Nodes# node oak_tree { name: &#34;Oak Tree&#34; location: forest gives: 1 oak_log gives_xp: 25 woodcutting # Grants woodcutting XP cooldown: 3000 }From Recipes# recipe bronze_bar { name: &#34;Bronze Bar&#34; consumes: 1 copper_ore, 1 tin_ore produces: 1 bronze_bar gives_xp: 15 smithing # Grants smithing XP }Skill Requirements# Use skills as requirements for content:">
+  <meta itemprop="wordCount" content="283">
+
+<title>Skills | Tick Forge Documentation</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://docs.tickforge.io/docs/language/skills/">
+<link rel="stylesheet" href="/book.min.cc2c524ed250aac81b23d1f4af87344917b325208841feca0968fe450f570575.css" integrity="sha256-zCxSTtJQqsgbI9H0r4c0SRezJSCIQf7KCWj&#43;RQ9XBXU=" crossorigin="anonymous">
+
+
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.7644b4386e5e494963772a688fad4ef91a7711e49a774b7522c17f9ae8e87354.js" integrity="sha256-dkS0OG5eSUljdypoj61O&#43;Rp3EeSad0t1IsF/mujoc1Q=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-docs">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Tick Forge Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/getting-started/" class="">
+      Getting Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4be79ceb7c93731ea9ceaaf930a270db" class="toggle" checked />
+    <label for="section-4be79ceb7c93731ea9ceaaf930a270db" class="flex">
+      <a href="/docs/language/" class="">
+        Language Reference</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/achievements/" class="">
+      Achievements</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/actions/" class="">
+      Actions</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/bank/" class="">
+      Bank</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/cheats/" class="">
+      Cheats</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/combat/" class="">
+      Combat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/endgame/" class="">
+      Endgame &amp; Credits</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/equipment/" class="">
+      Equipment</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/game/" class="">
+      Game Declaration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/generators/" class="">
+      Generators</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/items/" class="">
+      Items &amp; Inventory</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/locations/" class="">
+      Locations &amp; Nodes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/player/" class="">
+      Player</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/recipes/" class="">
+      Recipes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/resources/" class="">
+      Resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/skills/" class="active">
+      Skills</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/themes/" class="">
+      Themes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/upgrades/" class="">
+      Upgrades</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/editor/" class="">
+      Editor Guide</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/platform/" class="">
+      Platform Features</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Skills</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#syntax">Syntax</a></li>
+    <li><a href="#properties">Properties</a></li>
+    <li><a href="#gaining-skill-xp">Gaining Skill XP</a>
+      <ul>
+        <li><a href="#from-nodes">From Nodes</a></li>
+        <li><a href="#from-recipes">From Recipes</a></li>
+      </ul>
+    </li>
+    <li><a href="#skill-requirements">Skill Requirements</a>
+      <ul>
+        <li><a href="#node-requirements">Node Requirements</a></li>
+        <li><a href="#recipe-requirements">Recipe Requirements</a></li>
+        <li><a href="#equipment-requirements">Equipment Requirements</a></li>
+      </ul>
+    </li>
+    <li><a href="#xp-formula">XP Formula</a></li>
+    <li><a href="#example-runescape-style-skills">Example: RuneScape-Style Skills</a></li>
+    <li><a href="#display">Display</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="skills">Skills<a class="anchor" href="#skills">#</a></h1>
+<p>Skills provide an RPG-style progression system separate from the main player level.</p>
+<h2 id="syntax">Syntax<a class="anchor" href="#syntax">#</a></h2>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">skill identifier {
+  name: &#34;Display Name&#34;
+  icon: &#34;X&#34;
+  max_level: 99
+}</code></pre><h2 id="properties">Properties<a class="anchor" href="#properties">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Required</th>
+          <th>Default</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>name</code></td>
+          <td>string</td>
+          <td>Yes</td>
+          <td>-</td>
+          <td>Skill display name</td>
+      </tr>
+      <tr>
+          <td><code>icon</code></td>
+          <td>string</td>
+          <td>Yes</td>
+          <td>-</td>
+          <td>Icon/emoji for the skill</td>
+      </tr>
+      <tr>
+          <td><code>max_level</code></td>
+          <td>number</td>
+          <td>No</td>
+          <td><code>99</code></td>
+          <td>Maximum skill level</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="gaining-skill-xp">Gaining Skill XP<a class="anchor" href="#gaining-skill-xp">#</a></h2>
+<p>Skills gain XP through nodes and recipes:</p>
+<h3 id="from-nodes">From Nodes<a class="anchor" href="#from-nodes">#</a></h3>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">node oak_tree {
+  name: &#34;Oak Tree&#34;
+  location: forest
+  gives: 1 oak_log
+  gives_xp: 25 woodcutting  # Grants woodcutting XP
+  cooldown: 3000
+}</code></pre><h3 id="from-recipes">From Recipes<a class="anchor" href="#from-recipes">#</a></h3>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">recipe bronze_bar {
+  name: &#34;Bronze Bar&#34;
+  consumes: 1 copper_ore, 1 tin_ore
+  produces: 1 bronze_bar
+  gives_xp: 15 smithing  # Grants smithing XP
+}</code></pre><h2 id="skill-requirements">Skill Requirements<a class="anchor" href="#skill-requirements">#</a></h2>
+<p>Use skills as requirements for content:</p>
+<h3 id="node-requirements">Node Requirements<a class="anchor" href="#node-requirements">#</a></h3>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">node magic_tree {
+  name: &#34;Magic Tree&#34;
+  location: forest
+  requires_skill: woodcutting 75
+  gives: 1 magic_log
+  gives_xp: 250 woodcutting
+}</code></pre><h3 id="recipe-requirements">Recipe Requirements<a class="anchor" href="#recipe-requirements">#</a></h3>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">recipe rune_sword {
+  name: &#34;Rune Sword&#34;
+  requires_skill: smithing 50
+  consumes: 2 rune_bar
+  produces: 1 rune_sword
+  gives_xp: 75 smithing
+}</code></pre><h3 id="equipment-requirements">Equipment Requirements<a class="anchor" href="#equipment-requirements">#</a></h3>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">equipment rune_pickaxe {
+  name: &#34;Rune Pickaxe&#34;
+  slot: weapon
+  requires_skill: mining 40
+  attack_bonus: 0
+  strength_bonus: 0
+}</code></pre><h2 id="xp-formula">XP Formula<a class="anchor" href="#xp-formula">#</a></h2>
+<p>Skill XP required per level follows a formula similar to RuneScape:</p>
+<pre tabindex="0"><code>XP for level N ≈ (N^2 + N) / 2 * 50</code></pre><p>Approximate XP totals:</p>
+<ul>
+<li>Level 10: ~2,750 XP</li>
+<li>Level 50: ~63,750 XP</li>
+<li>Level 99: ~245,000 XP</li>
+</ul>
+<h2 id="example-runescape-style-skills">Example: RuneScape-Style Skills<a class="anchor" href="#example-runescape-style-skills">#</a></h2>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs">skill mining {
+  name: &#34;Mining&#34;
+  icon: &#34;⛏️&#34;
+  max_level: 99
+}
+
+skill smithing {
+  name: &#34;Smithing&#34;
+  icon: &#34;🔨&#34;
+  max_level: 99
+}
+
+skill woodcutting {
+  name: &#34;Woodcutting&#34;
+  icon: &#34;🪓&#34;
+  max_level: 99
+}
+
+skill fishing {
+  name: &#34;Fishing&#34;
+  icon: &#34;🎣&#34;
+  max_level: 99
+}
+
+skill cooking {
+  name: &#34;Cooking&#34;
+  icon: &#34;🍳&#34;
+  max_level: 99
+}</code></pre><h2 id="display">Display<a class="anchor" href="#display">#</a></h2>
+<p>Skills appear in the Skills tab showing:</p>
+<ul>
+<li>Skill icon and name</li>
+<li>Current level</li>
+<li>XP progress bar</li>
+<li>XP to next level</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+
+
+
+
+  
+  
+  
+  <div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/docs/language/resources/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Resources</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/docs/language/themes/" class="flex align-center">
+        <span>Themes</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+  
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#syntax">Syntax</a></li>
+    <li><a href="#properties">Properties</a></li>
+    <li><a href="#gaining-skill-xp">Gaining Skill XP</a>
+      <ul>
+        <li><a href="#from-nodes">From Nodes</a></li>
+        <li><a href="#from-recipes">From Recipes</a></li>
+      </ul>
+    </li>
+    <li><a href="#skill-requirements">Skill Requirements</a>
+      <ul>
+        <li><a href="#node-requirements">Node Requirements</a></li>
+        <li><a href="#recipe-requirements">Recipe Requirements</a></li>
+        <li><a href="#equipment-requirements">Equipment Requirements</a></li>
+      </ul>
+    </li>
+    <li><a href="#xp-formula">XP Formula</a></li>
+    <li><a href="#example-runescape-style-skills">Example: RuneScape-Style Skills</a></li>
+    <li><a href="#display">Display</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

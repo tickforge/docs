@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en-gb" dir="ltr">
+<head>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Editor Guide# The built-in TickForge editor provides a complete development environment.
+Opening the Editor# Visit tickforge.io Click Open Editor Interface# ┌─────────────────────────────────────────────────────────┐ │ [Back] TickForge Editor [ ] Auto-compile │ ├────────────────────────┬────────────────────────────────┤ │ game.tfs │ Preview [Restart] │ ├────────────────────────┼────────────────────────────────┤ │ 1│ # My Game │ │ │ 2│ game &#34;My Game&#34; { │ ┌──────────────────────┐ │ │ 3│ version: &#34;1.0&#34; │ │ │ │ │ 4│ } │ │ Live Game │ │ │ 5│ │ │ Preview │ │ │ 6│ resource gold { │ │ │ │ │ 7│ name: &#34;Gold&#34; │ └──────────────────────┘ │ │ 8│ ... │ │ ├────────────────────────┤ │ │ ❌ Compilation Error │ │ │ Line 7: Expected &#39;}&#39; │ │ └────────────────────────┴────────────────────────────────┘Features# Live Preview# The right panel shows your game running in real-time. Changes compile automatically after 500ms of inactivity.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://docs.tickforge.io/docs/editor/">
+  <meta property="og:site_name" content="Tick Forge Documentation">
+  <meta property="og:title" content="Editor Guide">
+  <meta property="og:description" content="Editor Guide# The built-in TickForge editor provides a complete development environment.
+Opening the Editor# Visit tickforge.io Click Open Editor Interface# ┌─────────────────────────────────────────────────────────┐ │ [Back] TickForge Editor [ ] Auto-compile │ ├────────────────────────┬────────────────────────────────┤ │ game.tfs │ Preview [Restart] │ ├────────────────────────┼────────────────────────────────┤ │ 1│ # My Game │ │ │ 2│ game &#34;My Game&#34; { │ ┌──────────────────────┐ │ │ 3│ version: &#34;1.0&#34; │ │ │ │ │ 4│ } │ │ Live Game │ │ │ 5│ │ │ Preview │ │ │ 6│ resource gold { │ │ │ │ │ 7│ name: &#34;Gold&#34; │ └──────────────────────┘ │ │ 8│ ... │ │ ├────────────────────────┤ │ │ ❌ Compilation Error │ │ │ Line 7: Expected &#39;}&#39; │ │ └────────────────────────┴────────────────────────────────┘Features# Live Preview# The right panel shows your game running in real-time. Changes compile automatically after 500ms of inactivity.">
+  <meta property="og:locale" content="en_gb">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+
+
+  <meta itemprop="name" content="Editor Guide">
+  <meta itemprop="description" content="Editor Guide# The built-in TickForge editor provides a complete development environment.
+Opening the Editor# Visit tickforge.io Click Open Editor Interface# ┌─────────────────────────────────────────────────────────┐ │ [Back] TickForge Editor [ ] Auto-compile │ ├────────────────────────┬────────────────────────────────┤ │ game.tfs │ Preview [Restart] │ ├────────────────────────┼────────────────────────────────┤ │ 1│ # My Game │ │ │ 2│ game &#34;My Game&#34; { │ ┌──────────────────────┐ │ │ 3│ version: &#34;1.0&#34; │ │ │ │ │ 4│ } │ │ Live Game │ │ │ 5│ │ │ Preview │ │ │ 6│ resource gold { │ │ │ │ │ 7│ name: &#34;Gold&#34; │ └──────────────────────┘ │ │ 8│ ... │ │ ├────────────────────────┤ │ │ ❌ Compilation Error │ │ │ Line 7: Expected &#39;}&#39; │ │ └────────────────────────┴────────────────────────────────┘Features# Live Preview# The right panel shows your game running in real-time. Changes compile automatically after 500ms of inactivity.">
+  <meta itemprop="wordCount" content="466">
+
+<title>Editor Guide | Tick Forge Documentation</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://docs.tickforge.io/docs/editor/">
+<link rel="stylesheet" href="/book.min.cc2c524ed250aac81b23d1f4af87344917b325208841feca0968fe450f570575.css" integrity="sha256-zCxSTtJQqsgbI9H0r4c0SRezJSCIQf7KCWj&#43;RQ9XBXU=" crossorigin="anonymous">
+
+
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.7644b4386e5e494963772a688fad4ef91a7711e49a774b7522c17f9ae8e87354.js" integrity="sha256-dkS0OG5eSUljdypoj61O&#43;Rp3EeSad0t1IsF/mujoc1Q=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-docs">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Tick Forge Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/getting-started/" class="">
+      Getting Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4be79ceb7c93731ea9ceaaf930a270db" class="toggle"  />
+    <label for="section-4be79ceb7c93731ea9ceaaf930a270db" class="flex">
+      <a href="/docs/language/" class="">
+        Language Reference</a>
+      <img src="/icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/achievements/" class="">
+      Achievements</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/actions/" class="">
+      Actions</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/bank/" class="">
+      Bank</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/cheats/" class="">
+      Cheats</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/combat/" class="">
+      Combat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/endgame/" class="">
+      Endgame &amp; Credits</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/equipment/" class="">
+      Equipment</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/game/" class="">
+      Game Declaration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/generators/" class="">
+      Generators</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/items/" class="">
+      Items &amp; Inventory</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/locations/" class="">
+      Locations &amp; Nodes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/player/" class="">
+      Player</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/recipes/" class="">
+      Recipes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/resources/" class="">
+      Resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/skills/" class="">
+      Skills</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/themes/" class="">
+      Themes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/language/upgrades/" class="">
+      Upgrades</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/editor/" class="active">
+      Editor Guide</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/platform/" class="">
+      Platform Features</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Editor Guide</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#opening-the-editor">Opening the Editor</a></li>
+    <li><a href="#interface">Interface</a></li>
+    <li><a href="#features">Features</a>
+      <ul>
+        <li><a href="#live-preview">Live Preview</a></li>
+        <li><a href="#auto-compile">Auto-Compile</a></li>
+        <li><a href="#line-numbers">Line Numbers</a></li>
+        <li><a href="#tab-support">Tab Support</a></li>
+        <li><a href="#error-panel">Error Panel</a></li>
+        <li><a href="#restart-button">Restart Button</a></li>
+      </ul>
+    </li>
+    <li><a href="#keyboard-shortcuts">Keyboard Shortcuts</a></li>
+    <li><a href="#workflow">Workflow</a>
+      <ul>
+        <li><a href="#starting-fresh">Starting Fresh</a></li>
+        <li><a href="#editing-existing-game">Editing Existing Game</a></li>
+        <li><a href="#saving-your-work">Saving Your Work</a></li>
+        <li><a href="#testing-changes">Testing Changes</a></li>
+      </ul>
+    </li>
+    <li><a href="#tips">Tips</a>
+      <ul>
+        <li><a href="#debugging">Debugging</a></li>
+        <li><a href="#performance">Performance</a></li>
+        <li><a href="#organization">Organization</a></li>
+      </ul>
+    </li>
+    <li><a href="#limitations">Limitations</a></li>
+    <li><a href="#external-editors">External Editors</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="editor-guide">Editor Guide<a class="anchor" href="#editor-guide">#</a></h1>
+<p>The built-in TickForge editor provides a complete development environment.</p>
+<h2 id="opening-the-editor">Opening the Editor<a class="anchor" href="#opening-the-editor">#</a></h2>
+<ol>
+<li>Visit <a href="https://tickforge.io">tickforge.io</a></li>
+<li>Click <strong>Open Editor</strong></li>
+</ol>
+<h2 id="interface">Interface<a class="anchor" href="#interface">#</a></h2>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────────────┐
+│  [Back]  TickForge Editor          [ ] Auto-compile    │
+├────────────────────────┬────────────────────────────────┤
+│  game.tfs              │  Preview            [Restart] │
+├────────────────────────┼────────────────────────────────┤
+│  1│ # My Game          │                                │
+│  2│ game &#34;My Game&#34; {   │    ┌──────────────────────┐   │
+│  3│   version: &#34;1.0&#34;   │    │                      │   │
+│  4│ }                  │    │    Live Game         │   │
+│  5│                    │    │    Preview           │   │
+│  6│ resource gold {    │    │                      │   │
+│  7│   name: &#34;Gold&#34;     │    └──────────────────────┘   │
+│  8│   ...              │                                │
+├────────────────────────┤                                │
+│ ❌ Compilation Error   │                                │
+│ Line 7: Expected &#39;}&#39;   │                                │
+└────────────────────────┴────────────────────────────────┘</code></pre><h2 id="features">Features<a class="anchor" href="#features">#</a></h2>
+<h3 id="live-preview">Live Preview<a class="anchor" href="#live-preview">#</a></h3>
+<p>The right panel shows your game running in real-time. Changes compile automatically after 500ms of inactivity.</p>
+<h3 id="auto-compile">Auto-Compile<a class="anchor" href="#auto-compile">#</a></h3>
+<ul>
+<li><strong>Enabled (default)</strong>: Code compiles automatically as you type</li>
+<li><strong>Disabled</strong>: Click &ldquo;Compile&rdquo; button to manually compile</li>
+</ul>
+<h3 id="line-numbers">Line Numbers<a class="anchor" href="#line-numbers">#</a></h3>
+<p>Line numbers help identify error locations. Scroll syncs between code and line numbers.</p>
+<h3 id="tab-support">Tab Support<a class="anchor" href="#tab-support">#</a></h3>
+<p>Press Tab to insert 2 spaces (standard indentation).</p>
+<h3 id="error-panel">Error Panel<a class="anchor" href="#error-panel">#</a></h3>
+<p>Compilation errors appear below the editor with:</p>
+<ul>
+<li>Error icon</li>
+<li>Error message</li>
+<li>Often includes line number</li>
+</ul>
+<h3 id="restart-button">Restart Button<a class="anchor" href="#restart-button">#</a></h3>
+<p>Click &ldquo;Restart&rdquo; in the preview header to reset the game state while keeping your code.</p>
+<h2 id="keyboard-shortcuts">Keyboard Shortcuts<a class="anchor" href="#keyboard-shortcuts">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>Key</th>
+          <th>Action</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Tab</td>
+          <td>Insert 2 spaces</td>
+      </tr>
+      <tr>
+          <td>Ctrl/Cmd + A</td>
+          <td>Select all</td>
+      </tr>
+      <tr>
+          <td>Ctrl/Cmd + C</td>
+          <td>Copy</td>
+      </tr>
+      <tr>
+          <td>Ctrl/Cmd + V</td>
+          <td>Paste</td>
+      </tr>
+      <tr>
+          <td>Ctrl/Cmd + Z</td>
+          <td>Undo</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="workflow">Workflow<a class="anchor" href="#workflow">#</a></h2>
+<h3 id="starting-fresh">Starting Fresh<a class="anchor" href="#starting-fresh">#</a></h3>
+<ol>
+<li>Open editor (loads starter template)</li>
+<li>Modify the template or clear and start fresh</li>
+<li>Preview updates automatically</li>
+</ol>
+<h3 id="editing-existing-game">Editing Existing Game<a class="anchor" href="#editing-existing-game">#</a></h3>
+<ol>
+<li>Open your <code>.tfs</code> file in a text editor</li>
+<li>Copy the contents</li>
+<li>Open TickForge editor</li>
+<li>Select all and paste your code</li>
+</ol>
+<h3 id="saving-your-work">Saving Your Work<a class="anchor" href="#saving-your-work">#</a></h3>
+<p>The editor doesn&rsquo;t save automatically. To save:</p>
+<ol>
+<li>Select all code (Ctrl/Cmd + A)</li>
+<li>Copy (Ctrl/Cmd + C)</li>
+<li>Paste into a text editor</li>
+<li>Save as <code>yourname.tfs</code></li>
+</ol>
+<h3 id="testing-changes">Testing Changes<a class="anchor" href="#testing-changes">#</a></h3>
+<ol>
+<li>Make edits in the code panel</li>
+<li>Wait for auto-compile (or click Compile)</li>
+<li>Test in preview panel</li>
+<li>Click Restart to reset game state</li>
+</ol>
+<h2 id="tips">Tips<a class="anchor" href="#tips">#</a></h2>
+<h3 id="debugging">Debugging<a class="anchor" href="#debugging">#</a></h3>
+<ul>
+<li>Check the error panel for syntax errors</li>
+<li>Errors often include line numbers</li>
+<li>Common issues:
+<ul>
+<li>Missing closing braces <code>}</code></li>
+<li>Missing colons after properties</li>
+<li>Typos in identifiers</li>
+</ul>
+</li>
+</ul>
+<h3 id="performance">Performance<a class="anchor" href="#performance">#</a></h3>
+<ul>
+<li>Large games may take longer to compile</li>
+<li>Disable auto-compile for complex edits</li>
+<li>Use Restart instead of recompiling for state reset</li>
+</ul>
+<h3 id="organization">Organization<a class="anchor" href="#organization">#</a></h3>
+<pre tabindex="0"><code class="language-tfs" data-lang="tfs"># Use comments to organize sections
+# ============================================
+# RESOURCES
+# ============================================
+
+resource gold { ... }
+resource gems { ... }
+
+# ============================================
+# GENERATORS
+# ============================================
+
+generator miner { ... }</code></pre><h2 id="limitations">Limitations<a class="anchor" href="#limitations">#</a></h2>
+<ul>
+<li>No syntax highlighting (yet)</li>
+<li>No autocomplete (yet)</li>
+<li>No file management (copy/paste to save)</li>
+<li>No multi-file support</li>
+</ul>
+<h2 id="external-editors">External Editors<a class="anchor" href="#external-editors">#</a></h2>
+<p>For larger projects, consider using an external editor:</p>
+<ul>
+<li><strong>VS Code</strong> - Install a custom language extension</li>
+<li><strong>Sublime Text</strong> - Use generic syntax highlighting</li>
+<li><strong>Any text editor</strong> - <code>.tfs</code> files are plain text</li>
+</ul>
+<p>Then drag-and-drop the file onto tickforge.io to play.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+
+
+
+
+  
+  
+  
+  <div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/docs/language/upgrades/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Upgrades</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/docs/platform/" class="flex align-center">
+        <span>Platform Features</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+  
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#opening-the-editor">Opening the Editor</a></li>
+    <li><a href="#interface">Interface</a></li>
+    <li><a href="#features">Features</a>
+      <ul>
+        <li><a href="#live-preview">Live Preview</a></li>
+        <li><a href="#auto-compile">Auto-Compile</a></li>
+        <li><a href="#line-numbers">Line Numbers</a></li>
+        <li><a href="#tab-support">Tab Support</a></li>
+        <li><a href="#error-panel">Error Panel</a></li>
+        <li><a href="#restart-button">Restart Button</a></li>
+      </ul>
+    </li>
+    <li><a href="#keyboard-shortcuts">Keyboard Shortcuts</a></li>
+    <li><a href="#workflow">Workflow</a>
+      <ul>
+        <li><a href="#starting-fresh">Starting Fresh</a></li>
+        <li><a href="#editing-existing-game">Editing Existing Game</a></li>
+        <li><a href="#saving-your-work">Saving Your Work</a></li>
+        <li><a href="#testing-changes">Testing Changes</a></li>
+      </ul>
+    </li>
+    <li><a href="#tips">Tips</a>
+      <ul>
+        <li><a href="#debugging">Debugging</a></li>
+        <li><a href="#performance">Performance</a></li>
+        <li><a href="#organization">Organization</a></li>
+      </ul>
+    </li>
+    <li><a href="#limitations">Limitations</a></li>
+    <li><a href="#external-editors">External Editors</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
